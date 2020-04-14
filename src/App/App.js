@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
+import { Route } from "react-router-dom";
 import LandingPage from "../LandingPage/LandingPage";
+import Signin from "../Signin/Signin";
 
 class App extends Component {
   componentDidMount() {
@@ -11,7 +13,9 @@ class App extends Component {
   render() {
     return (
       <main>
-        <LandingPage />
+        <Route exact path="/start" component={LandingPage} />
+        <Route exact path="/signin" component={Signin} />
+        <Route exact path="/register" component={Signin} />
       </main>
     );
   }
