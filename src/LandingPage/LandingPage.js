@@ -18,15 +18,15 @@ class LandingPage extends Component {
         </section>
         <section>
           <h3>Save all your characters in the Character Library</h3>
-          <img src="https://via.placeholder.com/150/" />
+          <img src="https://via.placeholder.com/150/" alt="placeholder1" />
         </section>
         <section>
           <h3>Update your stats, to keep track of your character.</h3>
-          <img src="https://via.placeholder.com/150/" />
+          <img src="https://via.placeholder.com/150/" alt="placeholder2" />
         </section>
         <section>
           <h3>Click on skills and attacks to roll automatically!</h3>
-          <img src="https://via.placeholder.com/150/" />
+          <img src="https://via.placeholder.com/150/" alt="placeholder3" />
         </section>
       </main>
     );
