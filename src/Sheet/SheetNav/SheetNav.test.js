@@ -1,9 +1,9 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import Sheet from "./Sheet";
+import SheetNav from "./SheetNav";
 
 test("renders learn react link", () => {
-  const { getByText } = render(<Sheet />);
+  const { getByText } = render(<SheetNav />);
   const linkElement = getByText(/learn react/i);
   expect(linkElement).toBeInTheDocument();
 });

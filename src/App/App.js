@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import LandingPage from "../LandingPage/LandingPage";
 
 class App extends Component {
   componentDidMount() {
@@ -8,7 +9,11 @@ class App extends Component {
   }
 
   render() {
-    return <main>Title of Section</main>;
+    return (
+      <main>
+        <LandingPage />
+      </main>
+    );
   }
 }
 
