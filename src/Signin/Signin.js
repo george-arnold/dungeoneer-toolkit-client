@@ -3,7 +3,12 @@ import "./Signin.css";
 
 class Signin extends Component {
   render() {
-    return <main>Signin</main>;
+    console.log(this.props);
+    return (
+      <main>
+        <button onClick={() => this.props.handleSignIn()}>Signin</button>
+      </main>
+    );
   }
 }
 
