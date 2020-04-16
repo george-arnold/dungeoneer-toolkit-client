@@ -1,0 +1,14 @@
+.PlaySheet {
+  margin-top: 10px;
+}
+.PlaySheet h3 {
+  margin: 0;
+}
+
+.PlaySheet h6 {
+  margin: 5px 10px 0 0;
+}
+
+.PlaySheet .FlexboxContainer {
+  padding-top: 10px;
+}

@@ -9,7 +9,7 @@ class Sheet extends Component {
     return (
       <main>
         <h2>Your Character Sheet</h2>
-        <SheetNav />
+        <SheetNav match={match} />
         <PlaySheet match={match} />
         <UpdateSheetForm />
       </main>
