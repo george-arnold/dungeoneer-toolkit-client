@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./Signin.css";
 
 class Signin extends Component {
@@ -6,7 +7,9 @@ class Signin extends Component {
     console.log(this.props);
     return (
       <main>
-        <button onClick={() => this.props.handleSignIn()}>Signin</button>
+        <button onClick={() => this.props.handleSignIn()}>
+          <Link to="/library">Signin</Link>
+        </button>
       </main>
     );
   }

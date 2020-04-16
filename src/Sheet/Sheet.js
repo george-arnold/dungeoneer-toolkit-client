@@ -1,9 +1,19 @@
 import React, { Component } from "react";
 import "./Sheet.css";
-
+import SheetNav from "./SheetNav/SheetNav";
+import UpdateSheetForm from "./UpdateSheetForm/UpdateSheetForm";
+import PlaySheet from "./PlaySheet/PlaySheet";
 class Sheet extends Component {
   render() {
-    return <main>Sheet</main>;
+    const { match } = this.props;
+    return (
+      <main>
+        <h2>Your Character Sheet</h2>
+        <SheetNav />
+        <PlaySheet match={match} />
+        <UpdateSheetForm />
+      </main>
+    );
   }
 }
 

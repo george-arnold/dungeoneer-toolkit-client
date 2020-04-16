@@ -5,9 +5,6 @@ class LandingPage extends Component {
   render() {
     return (
       <main>
-        <h1>The Dungeoneer's Toolkit</h1>
-        <p> Catalog your role playing characters, and manage your dice rolls</p>
-        <p> Sign in to get started</p>
         <section>
           <h1>The Dungeoneer's Toolkit</h1>
           <p>

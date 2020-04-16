@@ -1,0 +1,27 @@
+.FlexboxContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.CharacterBox {
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 15px;
+  padding: 10px;
+  display: inline-block;
+  text-align: center;
+  width: 75px;
+}
+
+.CharacterBox a {
+  width: 100%;
+}
+
+.CharacterBox img {
+  margin-top: 10px;
+  width: 75px;
+  border-radius: 10px;
+  box-shadow: 2px 2px;
+}
