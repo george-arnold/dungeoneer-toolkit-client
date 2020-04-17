@@ -7,6 +7,11 @@
 
 .PlaySheet h6 {
   margin: 5px 10px 0 0;
+  font-size: 18px;
+  border: 1px solid black;
+  padding: 5px;
+  width: 150px;
+  text-align: center;
 }
 
 .PlaySheet .FlexboxContainer {

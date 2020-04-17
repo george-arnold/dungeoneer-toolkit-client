@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "./UpdateSheetForm.css";
-import DungeoneerContext from "../../DungeoneerContext";
 class UpdateSheetForm extends Component {
-  static contextType = DungeoneerContext;
   constructor(props) {
     super(props);
     this.state = {
