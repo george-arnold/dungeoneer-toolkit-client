@@ -1,6 +1,5 @@
 import React from "react";
 
 export default React.createContext({
-  characters: [],
-  onUpdateCharacter: () => {},
+  id: null,
 });

@@ -1,0 +1,13 @@
+.UpdateSheetForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.UpdateSheetForm input {
+  width: 100px;
+}
+
+.UpdateSheetForm div input {
+  display: block;
+  width: 50px;
+}

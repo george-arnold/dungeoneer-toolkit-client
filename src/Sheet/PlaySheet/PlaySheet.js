@@ -26,7 +26,7 @@ class PlaySheet extends Component {
           <h6 className="Wisdom">Wisdom: {characters[id].wisdom}</h6>
           <h6 className="Charisma">Charisma: {characters[id].charisma}</h6>
         </div>
-        <GamePad />
+        <GamePad id={id} />
       </section>
     );
   }

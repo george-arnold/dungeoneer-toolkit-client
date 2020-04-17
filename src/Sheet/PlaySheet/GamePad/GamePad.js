@@ -19,8 +19,9 @@ class GamePad extends Component {
     const { value } = this.state;
     return (
       <section>
-        <ButtonList changeValue={this.changeValue} />
+        <ButtonList id={this.props.id} changeValue={this.changeValue} />
         <h2>{value}</h2>
+        {/* take damage section */}
       </section>
     );
   }

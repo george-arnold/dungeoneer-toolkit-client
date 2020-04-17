@@ -118,9 +118,25 @@ class App extends Component {
       signedIn: !signedIn,
     });
   };
+
+  onUpdateCharacter = (i, character) => {
+    this.setState((state) => {
+      const characters = state.characters.map((item, j) => {
+        if (j === i) {
+          return character;
+        } else {
+          return item;
+        }
+      });
+      return {
+        characters,
+      };
+    });
+  };
   render() {
     const value = {
       characters: this.state.characters,
+      onUpdateCharacter: this.onUpdateCharacter,
     };
     const { signedIn } = this.state;
     // NEXT STEP if signed in, load character library
