@@ -12,7 +12,7 @@ const CharacterLibrary = () => {
         {characters.map((character) => {
           return (
             <div key={character.id} className="CharacterBox">
-              <Link to={`/library/character/${character.id}`}>
+              <Link to={`/library/${character.id}`}>
                 {character.name}
                 <img alt={character.name} src={character.imageURL} />
               </Link>
@@ -21,7 +21,7 @@ const CharacterLibrary = () => {
         })}
       </section>
       <Route
-        path={`library/character/:characterid`}
+        path={`/library/:characterId`}
         render={(props) => <Sheet {...props} characters={characters} />}
       />
     </main>
