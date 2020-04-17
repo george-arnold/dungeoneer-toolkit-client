@@ -1,56 +1,28 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./UpdateSheetForm.css";
-class UpdateSheetForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      id: "",
-      name: "",
-      level: "",
-      class: "",
-      hp: "",
-      strength: "",
-      dexterity: "",
-      constitution: "",
-      intelligence: "",
-      wisdom: "",
-      charisma: "",
-      errorCodes: "",
-    };
-  }
-  //try putting the handler in App <---
-  onNameChange = (event) => {
-    const { value } = event.target;
-    this.setState({ name: value });
-  };
-
+const UpdateSheetForm = (props) => {
+  const { character } = props;
+  const { id } = props;
+  // const [name, setName] = useState()
   // handleSubmit(e) {
   //   e.preventDefault();
   //   this.context.onUpdateItem(id, characters);
   // }
-  render() {
-    // const statTypesArray = [
-    //   "Strength",
-    //   "Constitution",
-    //   "Dexterity",
-    //   "Intelligence",
-    //   "Wisdom",
-    //   "Charisma",
-    // ];
-    const { characters } = this.context;
-    console.log(characters);
-    const { id } = this.props.match.params;
-    const character = characters[id];
 
-    return (
-      <form className="UpdateSheetForm">
-        <label> Name </label>
-        <input
-          type="text"
-          onChange={this.onNameChange}
-          value={character.name}
-        />
-        {/*  this is commented out so that I can isolate the problem with passing information from context and updating it in the form
+  const statTypesArray = [
+    "Strength",
+    "Constitution",
+    "Dexterity",
+    "Intelligence",
+    "Wisdom",
+    "Charisma",
+  ];
+
+  return (
+    <form className="UpdateSheetForm">
+      <label> Name </label>
+      <input type="text" value={character.name} />
+      {/*  this is commented out so that I can isolate the problem with passing information from context and updating it in the form
         <label>Level </label>
         <input type="number" value={character.level} />
         <label>Hit Points </label>
@@ -74,7 +46,7 @@ class UpdateSheetForm extends Component {
             </div>
           );
         })} */}
-        {/* <div>
+      {/* <div>
           <label> Strength </label>
           <input type="number" value={character.strength} />
           <label> Dexterity </label>
@@ -88,15 +60,14 @@ class UpdateSheetForm extends Component {
           <label> Charisma</label>
           <input type="number" value={character.charisma} />
         </div> */}
-        <input
-          className="Submit"
-          type="submit"
-          onClick={() => this.context.onUpdateItem(id, character)}
-          value="Update Character"
-        ></input>
-      </form>
-    );
-  }
-}
+      <input
+        className="Submit"
+        type="submit"
+        onClick={() => this.context.onUpdateItem(id, character)}
+        value="Update Character"
+      ></input>
+    </form>
+  );
+};
 
 export default UpdateSheetForm;

@@ -1,56 +1,56 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./App.css";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import LandingPage from "../LandingPage/LandingPage";
 import Signin from "../Signin/Signin";
 import Navigation from "../Navigation/Navigation";
 import CharacterLibrary from "../CharacterLibrary/CharacterLibrary";
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      signedIn: false,
-      //an array of character objects
-    };
-  }
-  handleSignIn = () => {
-    const { signedIn } = this.state;
-    this.setState({
-      signedIn: !signedIn,
-    });
-  };
+import Sheet from "../Sheet/Sheet";
+import CharacterDataSTORE from "../CharacterDataSTORE";
+const App = () => {
+  const [signedIn, setSignedIn] = useState(false);
 
-  onUpdateCharacter = (i, character) => {
-    this.setState((state) => {
-      const characters = state.characters.map((item, j) => {
-        if (j === i) {
-          return character;
-        } else {
-          return item;
-        }
-      });
-      return {
-        characters,
-      };
-    });
-  };
-  render() {
-    const { signedIn } = this.state;
-    // NEXT STEP if signed in, load character library
-    return (
-      <main>
-        <Navigation handleSignIn={this.handleSignIn} signedIn={signedIn} />
+  const { characters } = CharacterDataSTORE;
+  // const [characterIndex, setCharacterIndex] = useState(0);
+  // const [name, setName] = useState(characters[characterIndex].name);
 
+  // const onUpdateCharacter = (i, character) => {
+  //   this.setState((state) => {
+  //     const characters = state.characters.map((item, j) => {
+  //       if (j === i) {
+  //         return character;
+  //       } else {
+  //         return item;
+  //       }
+  //     });
+  //     return {
+  //       characters,
+  //     };
+  //   });
+  // };
+
+  return (
+    <main>
+      <Navigation handleSignIn={setSignedIn} signedIn={signedIn} />
+      <Switch>
         <Route exact path="/start" component={LandingPage} />
         <Route exact path="/signin">
-          <Signin handleSignIn={this.handleSignIn} />
+          <Signin setSignedIn={setSignedIn} />
         </Route>
-        <Route exact path="/library" component={CharacterLibrary} />
-
-        {/* <Route exact path="/register" component={Signin} /> */}
-      </main>
-    );
-  }
-}
+        <Route
+          exact
+          path="/library"
+          render={(props) => (
+            <CharacterLibrary {...props} characters={characters} />
+          )}
+        />
+        <Route
+          path={`/library/character/:id`}
+          render={(props) => <Sheet {...props} characters={characters} />}
+        />
+      </Switch>
+    </main>
+  );
+};
 
 export default App;

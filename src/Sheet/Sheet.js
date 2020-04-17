@@ -1,27 +1,23 @@
 import React from "react";
 import "./Sheet.css";
-import SheetNav from "./SheetNav/SheetNav";
+// import SheetNav from "./SheetNav/SheetNav";
 import UpdateSheetForm from "./UpdateSheetForm/UpdateSheetForm";
 import PlaySheet from "./PlaySheet/PlaySheet";
-// import CharacterNavContext from "../CharacterNavContext";
 
 const Sheet = (props) => {
-  console.log(props);
-  // const { match } = props;
-  // const { id } = this.props.match.params;
-  // const value = {
-  //   id: id,
-  // };
+  let { id } = props.match.params;
+  const { characters } = props;
+
+  id = Number(id);
+  console.log(id);
+  const character = characters[id];
+
   return (
     <main>
-      {/* <CharacterNavContext.Provider value={value}> */}
-
       <h2>Your Character Sheet</h2>
-      {/* <SheetNav match={match} />
-      <UpdateSheetForm match={match} />
-      <PlaySheet match={match} /> */}
-
-      {/* </CharacterNavContext.Provider> */}
+      {/* <SheetNav id={id} /> */}
+      <UpdateSheetForm id={id} character={character} />
+      <PlaySheet id={id} character={character} />
     </main>
   );
 };

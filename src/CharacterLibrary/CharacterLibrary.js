@@ -1,18 +1,15 @@
 import React from "react";
 import "./CharacterLibrary.css";
-import { Route, Link } from "react-router-dom";
-import CharacterDataSTORE from "../CharacterDataSTORE";
-import Sheet from "../Sheet/Sheet";
-
-const CharacterLibrary = () => {
-  const { characters } = CharacterDataSTORE;
+import { Link } from "react-router-dom";
+const CharacterLibrary = (props) => {
+  const { characters } = props;
   return (
     <main>
       <section className="FlexboxContainer">
         {characters.map((character) => {
           return (
             <div key={character.id} className="CharacterBox">
-              <Link to={`/library/${character.id}`}>
+              <Link to={`/library/character/${character.id}`}>
                 {character.name}
                 <img alt={character.name} src={character.imageURL} />
               </Link>
@@ -20,10 +17,10 @@ const CharacterLibrary = () => {
           );
         })}
       </section>
-      <Route
-        path={`/library/:characterId`}
+      {/* <Route
+        path={`${match.path}/:characterId`}
         render={(props) => <Sheet {...props} characters={characters} />}
-      />
+      /> */}
     </main>
   );
 };
