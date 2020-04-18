@@ -1,27 +1,175 @@
 import React, { useState } from "react";
 import "./UpdateSheetForm.css";
+import { Formik } from "formik";
+
 const UpdateSheetForm = (props) => {
   const { character } = props;
-  const { id } = props;
-  // const [name, setName] = useState()
-  // handleSubmit(e) {
-  //   e.preventDefault();
-  //   this.context.onUpdateItem(id, characters);
-  // }
-
-  const statTypesArray = [
-    "Strength",
-    "Constitution",
-    "Dexterity",
-    "Intelligence",
-    "Wisdom",
-    "Charisma",
-  ];
-
+  console.log(character);
   return (
-    <form className="UpdateSheetForm">
-      <label> Name </label>
-      <input type="text" value={character.name} />
+    <div>
+      <Formik
+        initialValues={{
+          name: character.name,
+          level: character.level,
+          class: character.class,
+          hp: character.hp,
+          strength: character.strength,
+          dexterity: character.dexterity,
+          constitution: character.constitution,
+          intelligence: character.intelligence,
+          wisdom: character.wisdom,
+          charisma: character.charisma,
+        }}
+        validate={(values) => {
+          const errors = {};
+          if (!values.name) {
+            errors.name = "Required";
+          }
+          if (!values.class) {
+            errors.class = "Required";
+          }
+          if (!values.level) {
+            errors.level = "Required";
+          }
+          if (!values.hp) {
+            errors.hp = "Required";
+          }
+          if (!values.strength) {
+            errors.strength = "Required";
+          }
+          if (!values.dexterity) {
+            errors.dexterity = "Required";
+          }
+          if (!values.constitution) {
+            errors.constitution = "Required";
+          }
+          if (!values.intelligence) {
+            errors.intelligence = "Required";
+          }
+          if (!values.wisdom) {
+            errors.wisdom = "Required";
+          }
+          if (!values.charisma) {
+            errors.charisma = "Required";
+          }
+          return errors;
+        }}
+        onSubmit={(values, { setSubmitting }) => {
+          setTimeout(() => {
+            alert(JSON.stringify(values, null, 2));
+            setSubmitting(false);
+          }, 40000);
+        }}
+      >
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          isSubmitting,
+          /* and other goodies */
+        }) => (
+          <form className="UpdateSheetForm" onSubmit={handleSubmit}>
+            <label htmlFor="name">Name:</label>
+            <input
+              type="name"
+              name="name"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.name}
+            />
+            {errors.name && touched.name && errors.name}
+            <label htmlFor="class">Class:</label>
+            <input
+              type="class"
+              name="class"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.class}
+            />
+            {errors.class && touched.class && errors.class}
+
+            <label htmlFor="level">Level:</label>
+            <input
+              type="level"
+              name="level"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.level}
+            />
+            {errors.level && touched.level && errors.level}
+            <label htmlFor="hp">Hp:</label>
+            <input
+              type="hp"
+              name="hp"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.hp}
+            />
+            {errors.hp && touched.hp && errors.hp}
+            <label htmlFor="strength">Strength:</label>
+            <input
+              type="strength"
+              name="strength"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.strength}
+            />
+            {errors.strength && touched.strength && errors.strength}
+            <label htmlFor="dexterity">Dexterity:</label>
+            <input
+              type="dexterity"
+              name="dexterity"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.dexterity}
+            />
+            {errors.dexterity && touched.dexterity && errors.dexterity}
+            <label htmlFor="constitution">Constitution:</label>
+            <input
+              type="constitution"
+              name="constitution"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.constitution}
+            />
+            {errors.constitution && touched.constitution && errors.constitution}
+            <label htmlFor="intelligence">Intelligence:</label>
+            <input
+              type="intelligence"
+              name="intelligence"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.intelligence}
+            />
+            {errors.intelligence && touched.intelligence && errors.intelligence}
+            <label htmlFor="wisdom">Wisdom:</label>
+            <input
+              type="wisdom"
+              name="wisdom"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.wisdom}
+            />
+            {errors.wisdom && touched.wisdom && errors.wisdom}
+            <label htmlFor="charisma">Charisma:</label>
+            <input
+              type="charisma"
+              name="charisma"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.charisma}
+            />
+            {errors.charisma && touched.charisma && errors.charisma}
+            <button type="submit" disabled={isSubmitting}>
+              Submit
+            </button>
+          </form>
+        )}
+      </Formik>
+
       {/*  this is commented out so that I can isolate the problem with passing information from context and updating it in the form
         <label>Level </label>
         <input type="number" value={character.level} />
@@ -60,13 +208,13 @@ const UpdateSheetForm = (props) => {
           <label> Charisma</label>
           <input type="number" value={character.charisma} />
         </div> */}
-      <input
+      {/* <input
         className="Submit"
         type="submit"
         onClick={() => this.context.onUpdateItem(id, character)}
         value="Update Character"
-      ></input>
-    </form>
+      ></input> */}
+    </div>
   );
 };
 

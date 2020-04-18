@@ -1,26 +1,32 @@
 import React from "react";
 import "./CharacterLibrary.css";
 import { Link } from "react-router-dom";
-const CharacterLibrary = (props) => {
-  const { characters } = props;
+
+const Character = ({ id, name, imageURL }) => {
+  return (
+    <div key={id} className="CharacterBox">
+      <Link to={`/character/${id}`}>
+        {name}
+        <img alt={name} src={imageURL} />
+      </Link>
+    </div>
+  );
+};
+const CharacterLibrary = ({ characters }) => {
   return (
     <main>
       <section className="FlexboxContainer">
         {characters.map((character) => {
+          console.log(character);
           return (
-            <div key={character.id} className="CharacterBox">
-              <Link to={`/library/character/${character.id}`}>
-                {character.name}
-                <img alt={character.name} src={character.imageURL} />
-              </Link>
-            </div>
+            <Character
+              id={character.id}
+              name={character.name}
+              imageURL={character.imageURL}
+            />
           );
         })}
       </section>
-      {/* <Route
-        path={`${match.path}/:characterId`}
-        render={(props) => <Sheet {...props} characters={characters} />}
-      /> */}
     </main>
   );
 };

@@ -10,7 +10,6 @@ import CharacterDataSTORE from "../CharacterDataSTORE";
 const App = () => {
   const [signedIn, setSignedIn] = useState(false);
 
-  const { characters } = CharacterDataSTORE;
   // const [characterIndex, setCharacterIndex] = useState(0);
   // const [name, setName] = useState(characters[characterIndex].name);
 
@@ -33,20 +32,18 @@ const App = () => {
     <main>
       <Navigation handleSignIn={setSignedIn} signedIn={signedIn} />
       <Switch>
-        <Route exact path="/start" component={LandingPage} />
+        <Route exact path="/" component={LandingPage} />
         <Route exact path="/signin">
           <Signin setSignedIn={setSignedIn} />
         </Route>
         <Route
           exact
           path="/library"
-          render={(props) => (
-            <CharacterLibrary {...props} characters={characters} />
-          )}
+          render={(props) => <CharacterLibrary {...props} />}
         />
         <Route
-          path={`/library/character/:id`}
-          render={(props) => <Sheet {...props} characters={characters} />}
+          path={`/character/:id`}
+          render={(props) => <Sheet {...props} />}
         />
       </Switch>
     </main>
