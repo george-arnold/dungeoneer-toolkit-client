@@ -17,3 +17,7 @@
 .PlaySheet .FlexboxContainer {
   padding-top: 10px;
 }
+
+.PlaySheet div {
+  font-size: 12px;
+}

@@ -65,7 +65,7 @@ export default [
     level: 10,
     class: "Warrior",
     hp: 0,
-    strength: 18,
+    strength: 16,
     dexterity: 12,
     constitution: 14,
     intelligence: 8,

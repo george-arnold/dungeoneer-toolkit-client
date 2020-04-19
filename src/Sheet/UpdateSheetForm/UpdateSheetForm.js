@@ -4,7 +4,7 @@ import { Formik } from "formik";
 
 const UpdateSheetForm = (props) => {
   const { character } = props;
-  console.log(character);
+  const classOptions = ["Thief", "Warrior", "Brute", "Mage", "Hunter", "Bard"];
   return (
     <div>
       <Formik
@@ -57,8 +57,11 @@ const UpdateSheetForm = (props) => {
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
+            props.setCharacter(values);
             setSubmitting(false);
-          }, 40000);
+            console.log(props);
+            props.history.push(`/character/${props.match.params.id}/play`);
+          }, 400);
         }}
       >
         {({
@@ -74,7 +77,7 @@ const UpdateSheetForm = (props) => {
           <form className="UpdateSheetForm" onSubmit={handleSubmit}>
             <label htmlFor="name">Name:</label>
             <input
-              type="name"
+              type="tet"
               name="name"
               onChange={handleChange}
               onBlur={handleBlur}
@@ -82,18 +85,28 @@ const UpdateSheetForm = (props) => {
             />
             {errors.name && touched.name && errors.name}
             <label htmlFor="class">Class:</label>
-            <input
-              type="class"
+
+            <select
               name="class"
+              value={values.class}
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.class}
-            />
+              style={{ display: "block" }}
+            >
+              <option value="" label="Select a class" />
+              {classOptions.map((role) => (
+                <option
+                  key={classOptions.indexOf(role)}
+                  value={role}
+                  label={role}
+                />
+              ))}
+            </select>
             {errors.class && touched.class && errors.class}
 
             <label htmlFor="level">Level:</label>
             <input
-              type="level"
+              type="number"
               name="level"
               onChange={handleChange}
               onBlur={handleBlur}
@@ -102,7 +115,7 @@ const UpdateSheetForm = (props) => {
             {errors.level && touched.level && errors.level}
             <label htmlFor="hp">Hp:</label>
             <input
-              type="hp"
+              type="number"
               name="hp"
               onChange={handleChange}
               onBlur={handleBlur}
@@ -111,7 +124,7 @@ const UpdateSheetForm = (props) => {
             {errors.hp && touched.hp && errors.hp}
             <label htmlFor="strength">Strength:</label>
             <input
-              type="strength"
+              type="number"
               name="strength"
               onChange={handleChange}
               onBlur={handleBlur}
@@ -120,7 +133,7 @@ const UpdateSheetForm = (props) => {
             {errors.strength && touched.strength && errors.strength}
             <label htmlFor="dexterity">Dexterity:</label>
             <input
-              type="dexterity"
+              type="number"
               name="dexterity"
               onChange={handleChange}
               onBlur={handleBlur}
@@ -129,7 +142,7 @@ const UpdateSheetForm = (props) => {
             {errors.dexterity && touched.dexterity && errors.dexterity}
             <label htmlFor="constitution">Constitution:</label>
             <input
-              type="constitution"
+              type="number"
               name="constitution"
               onChange={handleChange}
               onBlur={handleBlur}
@@ -138,7 +151,7 @@ const UpdateSheetForm = (props) => {
             {errors.constitution && touched.constitution && errors.constitution}
             <label htmlFor="intelligence">Intelligence:</label>
             <input
-              type="intelligence"
+              type="number"
               name="intelligence"
               onChange={handleChange}
               onBlur={handleBlur}
@@ -147,7 +160,7 @@ const UpdateSheetForm = (props) => {
             {errors.intelligence && touched.intelligence && errors.intelligence}
             <label htmlFor="wisdom">Wisdom:</label>
             <input
-              type="wisdom"
+              type="number"
               name="wisdom"
               onChange={handleChange}
               onBlur={handleBlur}
@@ -156,7 +169,7 @@ const UpdateSheetForm = (props) => {
             {errors.wisdom && touched.wisdom && errors.wisdom}
             <label htmlFor="charisma">Charisma:</label>
             <input
-              type="charisma"
+              type="number"
               name="charisma"
               onChange={handleChange}
               onBlur={handleBlur}

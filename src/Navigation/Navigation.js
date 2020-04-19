@@ -8,7 +8,7 @@ const Navigation = (props) => {
   if (signedIn) {
     return (
       <nav className="Navigation">
-        <Link onClick={() => props.handleSignIn(false)} to="/start">
+        <Link onClick={() => props.handleSignIn(false)} to="/">
           Logout
         </Link>
       </nav>

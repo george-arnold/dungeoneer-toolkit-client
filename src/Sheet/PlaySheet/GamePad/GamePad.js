@@ -4,10 +4,15 @@ import ButtonList from "../ButtonList/ButtonList";
 
 const GamePad = (props) => {
   const [value, changeValue] = useState(null);
-
+  const { attackBonus, attackStat } = props;
   return (
-    <section>
-      <ButtonList id={props.id} changeValue={changeValue} />
+    <section className="GamePad">
+      <ButtonList
+        id={props.id}
+        changeValue={changeValue}
+        attackBonus={attackBonus}
+        attackStat={attackStat}
+      />
       <h2>{value}</h2>
       {/* take damage section */}
     </section>

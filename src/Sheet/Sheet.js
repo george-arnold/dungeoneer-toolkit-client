@@ -4,9 +4,11 @@ import SheetNav from "./SheetNav/SheetNav";
 import UpdateSheetForm from "./UpdateSheetForm/UpdateSheetForm";
 import PlaySheet from "./PlaySheet/PlaySheet";
 import CharacterDataSTORE from "../CharacterDataSTORE";
+import { Switch, Route } from "react-router-dom";
 
 const Sheet = (props) => {
   let { id } = props.match.params;
+
   id = Number(id);
 
   const characters = CharacterDataSTORE;
@@ -22,13 +24,28 @@ const Sheet = (props) => {
     wisdom: characters[id].wisdom,
     charisma: characters[id].charisma,
   });
+  console.log("path in Sheet", props.match.path);
 
   return (
     <main>
       <h2>Your Character Sheet</h2>
       <SheetNav id={id} />
-      <UpdateSheetForm character={character} setCharacter={setCharacter} />
-      {/* <PlaySheet megaState={megaState} /> */}
+      <Switch>
+        <Route
+          path={`${props.match.path}/edit`}
+          render={(props) => (
+            <UpdateSheetForm
+              {...props}
+              character={character}
+              setCharacter={setCharacter}
+            />
+          )}
+        />
+        <Route
+          path={`${props.match.path}`}
+          render={(props) => <PlaySheet {...props} character={character} />}
+        />
+      </Switch>
     </main>
   );
 };

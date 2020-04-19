@@ -1,10 +1,10 @@
 import React from "react";
 import "./CharacterLibrary.css";
 import { Link } from "react-router-dom";
-
+import characters from "../CharacterDataSTORE";
 const Character = ({ id, name, imageURL }) => {
   return (
-    <div key={id} className="CharacterBox">
+    <div className="CharacterBox">
       <Link to={`/character/${id}`}>
         {name}
         <img alt={name} src={imageURL} />
@@ -12,17 +12,18 @@ const Character = ({ id, name, imageURL }) => {
     </div>
   );
 };
-const CharacterLibrary = ({ characters }) => {
+const CharacterLibrary = () => {
+  console.log(characters);
   return (
     <main>
       <section className="FlexboxContainer">
         {characters.map((character) => {
-          console.log(character);
           return (
             <Character
               id={character.id}
               name={character.name}
               imageURL={character.imageURL}
+              key={character.id}
             />
           );
         })}
