@@ -56,7 +56,7 @@ const UpdateSheetForm = (props) => {
         }}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
+            // alert(JSON.stringify(values, null, 2));
             props.setCharacter(values);
             setSubmitting(false);
             console.log(props);
