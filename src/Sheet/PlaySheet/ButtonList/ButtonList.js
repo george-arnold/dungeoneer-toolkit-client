@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./ButtonList.css";
 
-const Button = () => {};
 const ButtonList = (props) => {
   const [dieRolled, setDieRoll] = useState(null);
 

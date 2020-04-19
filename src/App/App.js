@@ -6,27 +6,8 @@ import Signin from "../Signin/Signin";
 import Navigation from "../Navigation/Navigation";
 import CharacterLibrary from "../CharacterLibrary/CharacterLibrary";
 import Sheet from "../Sheet/Sheet";
-import CharacterDataSTORE from "../CharacterDataSTORE";
 const App = () => {
   const [signedIn, setSignedIn] = useState(false);
-
-  // const [characterIndex, setCharacterIndex] = useState(0);
-  // const [name, setName] = useState(characters[characterIndex].name);
-
-  // const onUpdateCharacter = (i, character) => {
-  //   this.setState((state) => {
-  //     const characters = state.characters.map((item, j) => {
-  //       if (j === i) {
-  //         return character;
-  //       } else {
-  //         return item;
-  //       }
-  //     });
-  //     return {
-  //       characters,
-  //     };
-  //   });
-  // };
 
   return (
     <main>
