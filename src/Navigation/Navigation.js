@@ -17,6 +17,7 @@ const Navigation = (props) => {
     return (
       <nav className="Navigation">
         <Link to="/signin">Signin</Link>
+        <Link to="/register">Register</Link>
       </nav>
     );
   }

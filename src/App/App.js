@@ -6,6 +6,7 @@ import Signin from "../Signin/Signin";
 import Navigation from "../Navigation/Navigation";
 import CharacterLibrary from "../CharacterLibrary/CharacterLibrary";
 import Sheet from "../Sheet/Sheet";
+import Register from "../Register/Register";
 const App = () => {
   const [signedIn, setSignedIn] = useState(false);
 
@@ -14,8 +15,11 @@ const App = () => {
       <Navigation handleSignIn={setSignedIn} signedIn={signedIn} />
       <Switch>
         <Route exact path="/" component={LandingPage} />
+        <Route exact path="/register">
+          <Register handleSignin={setSignedIn} />
+        </Route>
         <Route exact path="/signin">
-          <Signin setSignedIn={setSignedIn} />
+          <Signin handleSignin={setSignedIn} />
         </Route>
         <Route
           exact

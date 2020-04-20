@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import AuthApiService from "../services/auth-api-service";
-import TokenService from "../services/token-service";
-import "./Signin.css";
+import "./Register.css";
 import { useHistory } from "react-router-dom";
 
-const Signin = (props) => {
+const Register = (props) => {
   let history = useHistory();
   const [submissionError, setSubmissionError] = useState(null);
   return (
     <main>
-      <h1>Sign in as new user</h1>
-
+      <h1>Register as New User</h1>
       <div className="error">{submissionError}</div>
       <Formik
         initialValues={{ email: "", password: "" }}
@@ -23,15 +21,13 @@ const Signin = (props) => {
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
-          AuthApiService.postLogin({
+          AuthApiService.postUser({
             email: values.email,
             password: values.password,
           })
-            .then((res) => {
-              values.password = "";
+            .then((user) => {
               values.email = "";
-
-              TokenService.saveAuthToken(res.authToken);
+              values.password = "";
               history.push("/library");
               props.handleSignin(true);
             })
@@ -43,9 +39,6 @@ const Signin = (props) => {
                 setSubmissionError(res.password);
               }
             });
-          setTimeout(() => {
-            setSubmitting(false);
-          }, 400);
         }}
       >
         {({ isSubmitting }) => (
@@ -64,4 +57,4 @@ const Signin = (props) => {
   );
 };
 
-export default Signin;
+export default Register;
