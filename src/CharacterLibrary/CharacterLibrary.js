@@ -21,7 +21,7 @@ const CharacterLibrary = () => {
       },
     })
       .then((charactersRes) => {
-        console.log(charactersRes);
+        console.log("res", charactersRes);
         if (!charactersRes.ok) {
           return charactersRes.json().then((event) => Promise.reject(event));
         }
@@ -29,8 +29,9 @@ const CharacterLibrary = () => {
       })
       .then((characterArray) => {
         setCharacterLib(characterArray);
-      });
-  });
+      })
+      .catch((err) => console.error(err));
+  }, []);
   return (
     <main>
       {" "}
