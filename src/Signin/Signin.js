@@ -34,6 +34,7 @@ const Signin = (props) => {
               TokenService.saveAuthToken(res.authToken);
               history.push("/library");
               props.handleSignin(true);
+              setSubmitting(false);
             })
             .catch((res) => {
               if (res.email) {
@@ -43,9 +44,6 @@ const Signin = (props) => {
                 setSubmissionError(res.password);
               }
             });
-          setTimeout(() => {
-            setSubmitting(false);
-          }, 400);
         }}
       >
         {({ isSubmitting }) => (

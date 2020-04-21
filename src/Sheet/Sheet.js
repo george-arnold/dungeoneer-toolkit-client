@@ -1,17 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Sheet.css";
 import SheetNav from "./SheetNav/SheetNav";
 import UpdateSheetForm from "./UpdateSheetForm/UpdateSheetForm";
 import PlaySheet from "./PlaySheet/PlaySheet";
-import CharacterDataSTORE from "../CharacterDataSTORE";
 import { Switch, Route } from "react-router-dom";
+import config from "../config";
+import TokenService from "../services/token-service";
 
 const Sheet = (props) => {
   let { id } = props.match.params;
 
   id = Number(id);
 
-  const characters = CharacterDataSTORE;
+  const [characters, setCharacters] = useState([]);
   const [character, setCharacter] = useState({
     name: characters[id].name,
     level: characters[id].level,
@@ -24,8 +25,25 @@ const Sheet = (props) => {
     wisdom: characters[id].wisdom,
     charisma: characters[id].charisma,
   });
-  console.log("path in Sheet", props.match.path);
-
+  useEffect(() => {
+    fetch(`${config.API_ENDPOINT}/characters`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        authorization: `bearer ${TokenService.getAuthToken()}`,
+      },
+    })
+      .then((charactersRes) => {
+        if (!charactersRes.ok) {
+          return charactersRes.json().then((event) => Promise.reject(event));
+        }
+        return charactersRes.json();
+      })
+      .then((characterArray) => {
+        setCharacters(characterArray);
+      })
+      .catch((error) => console.log(error));
+  });
   return (
     <main>
       <h2>Your Character Sheet</h2>
