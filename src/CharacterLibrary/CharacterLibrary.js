@@ -7,48 +7,44 @@ import config from "../config";
 const Character = ({ id, name, imageURL }) => {
   return (
     <div className="CharacterBox">
-      <Link to={`/character/${id}`}>
-        {name}
-        <img alt={name} src={imageURL} />
-      </Link>
+      <Link to={`/character/${id}`}>{name}</Link>
     </div>
   );
 };
 const CharacterLibrary = () => {
-  // const [characterLib, setCharacterLib] = useState([]);
-  // useEffect(() => {
-  //   // fetch(`${config.API_ENDPOINT}/characters`, {
-  //   //   method: "GET",
-  //   //   headers: {
-  //   //     authorization: `bearer ${TokenService.getAuthToken()}`,
-  //   //   },
-  //   // })
-  //   //   .then((charactersRes) => {
-  //   //     if (!charactersRes.ok) {
-  //   //       return charactersRes.json().then((event) => Promise.reject(event));
-  //   //     }
-  //   //     return charactersRes.json();
-  //   //   })
-  //   //   .then((characterArray) => {
-  //   //     setCharacterLib(characterArray);
-  //   //   });
-  // });
+  const [characterLib, setCharacterLib] = useState([]);
+  useEffect(() => {
+    fetch(`${config.API_ENDPOINT}/characters`, {
+      method: "GET",
+      headers: {
+        authorization: `bearer ${TokenService.getAuthToken()}`,
+      },
+    })
+      .then((charactersRes) => {
+        console.log(charactersRes);
+        if (!charactersRes.ok) {
+          return charactersRes.json().then((event) => Promise.reject(event));
+        }
+        return charactersRes.json();
+      })
+      .then((characterArray) => {
+        setCharacterLib(characterArray);
+      });
+  });
   return (
     <main>
       {" "}
-      Hi
-      {/* <section className="FlexboxContainer">
+      <section className="FlexboxContainer">
         {characterLib.map((character) => {
           return (
             <Character
               id={character.id}
               name={character.name}
-              imageURL={character.imageURL}
               key={character.id}
             />
           );
         })}
-      </section> */}
+      </section>
     </main>
   );
 };

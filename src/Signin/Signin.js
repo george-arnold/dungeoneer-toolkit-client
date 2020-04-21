@@ -32,9 +32,9 @@ const Signin = (props) => {
               values.email = "";
 
               TokenService.saveAuthToken(res.authToken);
-              history.push("/library");
               props.handleSignin(true);
               setSubmitting(false);
+              history.push("/library");
             })
             .catch((res) => {
               if (res.email) {
