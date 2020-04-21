@@ -16,23 +16,23 @@ const Character = ({ id, name, imageURL }) => {
 };
 const CharacterLibrary = () => {
   // const [characterLib, setCharacterLib] = useState([]);
-  useEffect(() => {
-    // fetch(`${config.API_ENDPOINT}/characters`, {
-    //   method: "GET",
-    //   headers: {
-    //     authorization: `bearer ${TokenService.getAuthToken()}`,
-    //   },
-    // })
-    //   .then((charactersRes) => {
-    //     if (!charactersRes.ok) {
-    //       return charactersRes.json().then((event) => Promise.reject(event));
-    //     }
-    //     return charactersRes.json();
-    //   })
-    //   .then((characterArray) => {
-    //     setCharacterLib(characterArray);
-    //   });
-  });
+  // useEffect(() => {
+  //   // fetch(`${config.API_ENDPOINT}/characters`, {
+  //   //   method: "GET",
+  //   //   headers: {
+  //   //     authorization: `bearer ${TokenService.getAuthToken()}`,
+  //   //   },
+  //   // })
+  //   //   .then((charactersRes) => {
+  //   //     if (!charactersRes.ok) {
+  //   //       return charactersRes.json().then((event) => Promise.reject(event));
+  //   //     }
+  //   //     return charactersRes.json();
+  //   //   })
+  //   //   .then((characterArray) => {
+  //   //     setCharacterLib(characterArray);
+  //   //   });
+  // });
   return (
     <main>
       {" "}
