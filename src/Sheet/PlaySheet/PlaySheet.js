@@ -7,18 +7,18 @@ import GamePad from "./GamePad/GamePad";
 const PlaySheet = (props) => {
   const { character } = props;
   const statsPerClass = [
-    { class: "Thief", stat: character.dexterity, statName: "Dexterity" },
-    { class: "Warrior", stat: character.strength, statName: "Strength" },
-    { class: "Brute", stat: character.constitution, statName: "Constitution" },
-    { class: "Mage", stat: character.intelligence, statName: "Intelligence" },
-    { class: "Hunter", stat: character.wisdom, statName: "Wisdom" },
-    { class: "Bard", stat: character.charisma, statName: "Charisma" },
+    { role: "Thief", stat: character.dexterity, statName: "Dexterity" },
+    { role: "Warrior", stat: character.strength, statName: "Strength" },
+    { role: "Brute", stat: character.constitution, statName: "Constitution" },
+    { role: "Mage", stat: character.intelligence, statName: "Intelligence" },
+    { role: "Hunter", stat: character.wisdom, statName: "Wisdom" },
+    { role: "Bard", stat: character.charisma, statName: "Charisma" },
   ];
   let attackBonus = null;
   let attackStat = null;
   const configureAttackBonus = (role) => {
     statsPerClass.forEach((data) => {
-      if (data.class === role) {
+      if (data.role === role) {
         attackBonus = data.stat / 2 - 5;
         attackStat = data.statName;
       }
@@ -57,7 +57,7 @@ const PlaySheet = (props) => {
         </h6>
       </div>
       <h3>
-        {configureAttackBonus(character.class)}
+        {configureAttackBonus(character.role)}
         {`Attack Bonus: ${attackBonus} (${attackStat})`}
       </h3>
       <GamePad attackBonus={attackBonus} attackStat={attackStat} />

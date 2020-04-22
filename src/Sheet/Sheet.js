@@ -9,24 +9,11 @@ import TokenService from "../services/token-service";
 
 const Sheet = (props) => {
   let { id } = props.match.params;
-
   id = Number(id);
-
-  const [characters, setCharacters] = useState([]);
-  const [character, setCharacter] = useState({
-    name: characters[id].name,
-    level: characters[id].level,
-    class: characters[id].class,
-    hp: characters[id].hp,
-    strength: characters[id].strength,
-    dexterity: characters[id].dexterity,
-    constitution: characters[id].constitution,
-    intelligence: characters[id].intelligence,
-    wisdom: characters[id].wisdom,
-    charisma: characters[id].charisma,
-  });
+  console.log(id);
+  const [character, setCharacter] = useState({});
   useEffect(() => {
-    fetch(`${config.API_ENDPOINT}/characters`, {
+    fetch(`${config.API_ENDPOINT}/characters/${id}`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -39,11 +26,11 @@ const Sheet = (props) => {
         }
         return charactersRes.json();
       })
-      .then((characterArray) => {
-        setCharacters(characterArray);
+      .then((characterData) => {
+        setCharacter(characterData);
       })
       .catch((error) => console.log(error));
-  });
+  }, [id]);
   return (
     <main>
       <h2>Your Character Sheet</h2>

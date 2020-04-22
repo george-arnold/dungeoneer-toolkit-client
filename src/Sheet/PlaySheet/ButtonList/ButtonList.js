@@ -27,7 +27,7 @@ const ButtonList = (props) => {
           </button>
         );
       })}
-      {/* needs to be randomnumber20 + relevant character class stat */}
+      {/* needs to be randomnumber20 + relevant character role stat */}
       <button
         onClick={() => {
           props.changeValue(randomNumber(20) + attackBonus);

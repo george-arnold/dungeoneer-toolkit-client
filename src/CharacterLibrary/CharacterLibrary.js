@@ -17,11 +17,10 @@ const CharacterLibrary = () => {
     fetch(`${config.API_ENDPOINT}/characters`, {
       method: "GET",
       headers: {
-        authorization: `bearer ${TokenService.getAuthToken()}`,
+        // authorization: `bearer ${TokenService.getAuthToken()}`,
       },
     })
       .then((charactersRes) => {
-        console.log("res", charactersRes);
         if (!charactersRes.ok) {
           return charactersRes.json().then((event) => Promise.reject(event));
         }

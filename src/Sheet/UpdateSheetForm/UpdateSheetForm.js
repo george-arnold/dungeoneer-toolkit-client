@@ -4,14 +4,14 @@ import { Formik } from "formik";
 
 const UpdateSheetForm = (props) => {
   const { character } = props;
-  const classOptions = ["Thief", "Warrior", "Brute", "Mage", "Hunter", "Bard"];
+  const roleOptions = ["Thief", "Warrior", "Brute", "Mage", "Hunter", "Bard"];
   return (
     <div>
       <Formik
         initialValues={{
           name: character.name,
           level: character.level,
-          class: character.class,
+          role: character.role,
           hp: character.hp,
           strength: character.strength,
           dexterity: character.dexterity,
@@ -25,8 +25,8 @@ const UpdateSheetForm = (props) => {
           if (!values.name) {
             errors.name = "Required";
           }
-          if (!values.class) {
-            errors.class = "Required";
+          if (!values.role) {
+            errors.role = "Required";
           }
           if (!values.level) {
             errors.level = "Required";
@@ -84,25 +84,25 @@ const UpdateSheetForm = (props) => {
               value={values.name}
             />
             {errors.name && touched.name && errors.name}
-            <label htmlFor="class">Class:</label>
+            <label htmlFor="role">role:</label>
 
             <select
-              name="class"
-              value={values.class}
+              name="role"
+              value={values.role}
               onChange={handleChange}
               onBlur={handleBlur}
               style={{ display: "block" }}
             >
-              <option value="" label="Select a class" />
-              {classOptions.map((role) => (
+              <option value="" label="Select a role" />
+              {roleOptions.map((role) => (
                 <option
-                  key={classOptions.indexOf(role)}
+                  key={roleOptions.indexOf(role)}
                   value={role}
                   label={role}
                 />
               ))}
             </select>
-            {errors.class && touched.class && errors.class}
+            {errors.role && touched.role && errors.role}
 
             <label htmlFor="level">Level:</label>
             <input
