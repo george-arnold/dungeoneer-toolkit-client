@@ -2,8 +2,9 @@ import React from "react";
 import "./UpdateSheetForm.css";
 import { Formik } from "formik";
 
+import config from "../../config";
 const UpdateSheetForm = (props) => {
-  const { character } = props;
+  const { character, id } = props;
   const roleOptions = ["Thief", "Warrior", "Brute", "Mage", "Hunter", "Bard"];
   return (
     <div>
@@ -55,13 +56,22 @@ const UpdateSheetForm = (props) => {
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            // alert(JSON.stringify(values, null, 2));
-            props.setCharacter(values);
-            setSubmitting(false);
-            console.log(props);
-            props.history.push(`/character/${props.match.params.id}/play`);
-          }, 400);
+          fetch(`${config.API_ENDPOINT}/characters/${id}`, {
+            method: "PATCH",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(values),
+          })
+            .then((res) =>
+              !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+            )
+            .then((res) => {
+              setSubmitting(false);
+              props.setCharacter(values);
+              props.history.push(`/character/${id}/play`);
+            })
+            .catch((error) => console.log(error));
         }}
       >
         {({

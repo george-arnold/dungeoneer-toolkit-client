@@ -10,14 +10,13 @@ import TokenService from "../services/token-service";
 const Sheet = (props) => {
   let { id } = props.match.params;
   id = Number(id);
-  console.log(id);
   const [character, setCharacter] = useState({});
   useEffect(() => {
     fetch(`${config.API_ENDPOINT}/characters/${id}`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
-        authorization: `bearer ${TokenService.getAuthToken()}`,
+        // authorization: `bearer ${TokenService.getAuthToken()}`,
       },
     })
       .then((charactersRes) => {
@@ -43,6 +42,7 @@ const Sheet = (props) => {
               {...props}
               character={character}
               setCharacter={setCharacter}
+              id={id}
             />
           )}
         />

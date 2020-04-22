@@ -15,12 +15,14 @@ const App = () => {
       <Navigation handleSignIn={setSignedIn} signedIn={signedIn} />
       <Switch>
         <Route exact path="/" component={LandingPage} />
-        <Route exact path="/register">
+
+        {/* Will be used in future implementation
+         <Route exact path="/register">
           <Register handleSignin={setSignedIn} />
         </Route>
         <Route exact path="/signin">
           <Signin handleSignin={setSignedIn} />
-        </Route>
+        </Route> */}
         <Route
           exact
           path="/library"
