@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./LandingPage.css";
+import { Link } from "react-router-dom";
 
 class LandingPage extends Component {
   render() {
@@ -7,6 +8,7 @@ class LandingPage extends Component {
       <main>
         <section>
           <h1>The Dungeoneer's Toolkit</h1>
+          <Link to="/library">SIGN IN </Link>
           <p>
             Catalog your role playing characters, and manage your dice rolls
           </p>

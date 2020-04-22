@@ -5,16 +5,9 @@
   padding: 10px;
   display: inline-block;
   text-align: center;
-  width: 75px;
+  width: 150px;
 }
 
 .CharacterBox a {
   width: 100%;
-}
-
-.CharacterBox img {
-  margin-top: 10px;
-  width: 75px;
-  border-radius: 10px;
-  box-shadow: 2px 2px;
 }

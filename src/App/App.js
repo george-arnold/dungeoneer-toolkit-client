@@ -12,7 +12,8 @@ const App = () => {
 
   return (
     <main>
-      <Navigation handleSignIn={setSignedIn} signedIn={signedIn} />
+      {/* Will be used in future implementation
+      <Navigation handleSignIn={setSignedIn} signedIn={signedIn} /> */}
       <Switch>
         <Route exact path="/" component={LandingPage} />
 
