@@ -6,6 +6,7 @@ import GamePad from "./GamePad/GamePad";
 //for each if character class is X make attackStat
 const PlaySheet = (props) => {
   const { character } = props;
+  console.log(character);
   const statsPerClass = [
     { role: "Thief", stat: character.dexterity, statName: "Dexterity" },
     { role: "Warrior", stat: character.strength, statName: "Strength" },
@@ -28,7 +29,7 @@ const PlaySheet = (props) => {
     <section className="PlaySheet">
       <h3 className="Name">Name: {character.name}</h3>
       <h3 className="Level">Level: {character.level}</h3>
-      <h3 className="Class">Class: {character.class}</h3>
+      <h3 className="Class">Class: {character.role}</h3>
       <h3 className="HP">HP: {character.hp}</h3>
       <div className="FlexboxContainer">
         <h6 className="Strength">
