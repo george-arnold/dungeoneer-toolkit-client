@@ -1,9 +1,9 @@
 import React from "react";
-import { render } from "@testing-library/react";
-import SheetNav from "./UpdateSheetForm";
+import ReactDOM from "react-dom";
+import UpdateSheetForm from "./UpdateSheetForm";
 
-test("renders learn react link", () => {
-  const { getByText } = render(<SheetNav />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+it("renders without crashing", () => {
+  const div = document.createElement("div");
+  ReactDOM.render(<UpdateSheetForm />, div);
+  ReactDOM.unmountComponentAtNode(div);
 });

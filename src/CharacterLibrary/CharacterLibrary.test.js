@@ -1,9 +1,9 @@
 import React from "react";
-import { render } from "@testing-library/react";
-import LandingPage from "./CharacterLibrary";
+import ReactDOM from "react-dom";
+import CharacterLibrary from "./CharacterLibrary";
 
-test("renders learn react link", () => {
-  const { getByText } = render(<LandingPage />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+it("renders without crashing", () => {
+  const div = document.createElement("div");
+  ReactDOM.render(<CharacterLibrary />, div);
+  ReactDOM.unmountComponentAtNode(div);
 });

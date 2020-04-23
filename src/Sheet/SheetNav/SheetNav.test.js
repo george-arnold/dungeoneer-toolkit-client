@@ -1,9 +1,9 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import ReactDOM from "react-dom";
 import SheetNav from "./SheetNav";
 
-test("renders learn react link", () => {
-  const { getByText } = render(<SheetNav />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+it("renders without crashing", () => {
+  const div = document.createElement("div");
+  ReactDOM.render(<SheetNav />, div);
+  ReactDOM.unmountComponentAtNode(div);
 });
