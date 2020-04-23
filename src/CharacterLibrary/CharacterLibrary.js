@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import TokenService from "../services/token-service";
 import config from "../config";
 
-const Character = ({ id, name, imageURL }) => {
+const Character = ({ id, name }) => {
   return (
     <div className="CharacterBox">
       <Link to={`/character/${id}`}>{name}</Link>
@@ -27,13 +27,15 @@ const CharacterLibrary = () => {
         return charactersRes.json();
       })
       .then((characterArray) => {
+        characterArray.sort((a, b) => a.id - b.id);
         setCharacterLib(characterArray);
       })
       .catch((err) => console.error(err));
   }, []);
   return (
     <main>
-      {" "}
+      <h2>Character Library</h2>
+      <h3>Select a Character to play or edit!</h3>
       <section className="FlexboxContainer">
         {characterLib.map((character) => {
           return (

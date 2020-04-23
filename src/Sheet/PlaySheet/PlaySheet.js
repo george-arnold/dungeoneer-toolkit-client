@@ -61,6 +61,11 @@ const PlaySheet = (props) => {
         {configureAttackBonus(character.role)}
         {`Attack Bonus: ${attackBonus} (${attackStat})`}
       </h3>
+      <h2>
+        {" "}
+        Click a button below to roll! The Attack Bonus uses your primary stat
+        (based on your class!)
+      </h2>
       <GamePad attackBonus={attackBonus} attackStat={attackStat} />
     </section>
   );
