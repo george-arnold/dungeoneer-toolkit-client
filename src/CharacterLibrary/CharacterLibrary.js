@@ -17,7 +17,7 @@ const CharacterLibrary = () => {
     fetch(`${config.API_ENDPOINT}/characters`, {
       method: "GET",
       headers: {
-        // authorization: `bearer ${TokenService.getAuthToken()}`,
+        "content-type": "application/json",
       },
     })
       .then((charactersRes) => {
