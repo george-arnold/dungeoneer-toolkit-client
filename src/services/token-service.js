@@ -1,4 +1,4 @@
-import config from "../config";
+import config from '../config';
 
 const TokenService = {
   saveAuthToken(token) {
@@ -15,7 +15,7 @@ const TokenService = {
   },
   makeBasicAuthToken(email, password) {
     return window.btoa(`${email}:${password}`);
-  },
+  }
 };
 
 export default TokenService;
