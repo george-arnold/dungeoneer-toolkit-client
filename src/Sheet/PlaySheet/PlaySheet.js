@@ -6,7 +6,6 @@ import GamePad from "./GamePad/GamePad";
 //for each if character class is X make attackStat
 const PlaySheet = (props) => {
   const { character } = props;
-  console.log(character);
   const statsPerClass = [
     { role: "Thief", stat: character.dexterity, statName: "Dexterity" },
     { role: "Warrior", stat: character.strength, statName: "Strength" },
