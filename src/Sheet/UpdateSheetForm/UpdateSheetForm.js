@@ -1,6 +1,7 @@
 import React from "react";
 import "./UpdateSheetForm.css";
 import { Formik } from "formik";
+import TokenService from "../../services/token-service";
 
 import config from "../../config";
 const UpdateSheetForm = (props) => {
@@ -56,10 +57,13 @@ const UpdateSheetForm = (props) => {
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
+          console.log(TokenService.getAuthToken());
+
           fetch(`${config.API_ENDPOINT}/characters/${id}`, {
             method: "PATCH",
             headers: {
               "content-type": "application/json",
+              authorization: `bearer ${TokenService.getAuthToken()}`,
             },
             body: JSON.stringify(values),
           })
@@ -67,11 +71,13 @@ const UpdateSheetForm = (props) => {
               !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
             )
             .then((res) => {
-              setSubmitting(false);
               props.setCharacter(values);
               props.history.push(`/character/${id}/play`);
             })
-            .catch((error) => console.log(error));
+            .catch((error) => {
+              setSubmitting(false);
+              console.log(error);
+            });
         }}
       >
         {({

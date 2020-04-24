@@ -1,14 +1,23 @@
-import React from 'react';
-import './Navigation.css';
-import { Link } from 'react-router-dom';
+import React from "react";
+import "./Navigation.css";
+import { Link } from "react-router-dom";
+import TokenService from "../services/token-service";
 
-const Navigation = props => {
-  const { signedIn } = props;
-
+const Navigation = (props) => {
+  let signedIn = false;
+  if (!!TokenService.getAuthToken()) {
+    signedIn = true;
+  }
   if (signedIn) {
     return (
       <nav className="Navigation">
-        <Link onClick={() => props.handleSignIn(false)} to="/">
+        <Link
+          onClick={() => {
+            TokenService.clearAuthToken();
+            props.handleSignIn(false);
+          }}
+          to="/"
+        >
           Logout
         </Link>
       </nav>
