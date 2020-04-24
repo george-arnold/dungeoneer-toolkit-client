@@ -14,7 +14,6 @@ const Navigation = (props) => {
         <Link
           onClick={() => {
             TokenService.clearAuthToken();
-            props.handleSignIn(false);
           }}
           to="/"
         >

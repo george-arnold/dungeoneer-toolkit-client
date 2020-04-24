@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
 import LandingPage from "../LandingPage/LandingPage";
@@ -7,10 +7,16 @@ import Navigation from "../Navigation/Navigation";
 import CharacterLibrary from "../CharacterLibrary/CharacterLibrary";
 import Sheet from "../Sheet/Sheet";
 import Register from "../Register/Register";
+// import TokenService from "../services/token-service";
 const App = () => {
+  // let signedIn = false;
+  // if (!!TokenService.getAuthToken()) {
+  //   signedIn = true;
+  // }
   return (
     <main>
-      <Navigation signedIn={signedIn} />
+      <Navigation />
+
       <Switch>
         <Route exact path="/" component={LandingPage} />
 
