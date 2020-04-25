@@ -3,17 +3,14 @@ import "./Navigation.css";
 import { Link } from "react-router-dom";
 import TokenService from "../services/token-service";
 
-const Navigation = (props) => {
-  let signedIn = false;
-  if (!!TokenService.getAuthToken()) {
-    signedIn = true;
-  }
+const Navigation = ({ setSignedIn, signedIn }) => {
   if (signedIn) {
     return (
       <nav className="Navigation">
         <Link
           onClick={() => {
             TokenService.clearAuthToken();
+            setSignedIn(false);
           }}
           to="/"
         >
@@ -24,8 +21,8 @@ const Navigation = (props) => {
   } else {
     return (
       <nav className="Navigation">
-        <Link to="/signin">Signin</Link>
         <Link to="/register">Register</Link>
+        <Link to="/signin">Signin</Link>
       </nav>
     );
   }
