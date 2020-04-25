@@ -5,7 +5,7 @@ import TokenService from "../services/token-service";
 import "./Signin.css";
 import { useHistory } from "react-router-dom";
 
-const Signin = () => {
+const Signin = ({ setSignedIn }) => {
   let history = useHistory();
   const [submissionError, setSubmissionError] = useState(null);
   return (
@@ -31,6 +31,7 @@ const Signin = () => {
               values.password = "";
               values.email = "";
               TokenService.saveAuthToken(res.authToken);
+              setSignedIn(true);
               setSubmitting(false);
               history.push("/library");
             })

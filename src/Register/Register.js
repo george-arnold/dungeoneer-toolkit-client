@@ -28,7 +28,8 @@ const Register = () => {
             .then((user) => {
               values.email = "";
               values.password = "";
-              history.push("/library");
+              setSubmitting(false);
+              history.push("/signin");
             })
             .catch((res) => {
               if (res.email) {
@@ -42,8 +43,11 @@ const Register = () => {
       >
         {({ isSubmitting }) => (
           <Form>
+            <label HTMLfor="email">Enter Email Address:</label>
             <Field type="email" name="email" />
             <ErrorMessage name="email" component="div" />
+
+            <label HTMLfor="email">Enter Password:</label>
             <Field type="password" name="password" />
             <ErrorMessage name="password" component="div" />
             <button type="submit" disabled={isSubmitting}>
