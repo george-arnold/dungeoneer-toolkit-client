@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap");
+
 main {
   padding: 10px;
 }
@@ -7,4 +9,10 @@ main {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
+}
+
+.App {
+  font-family: "Montserrat", sans-serif;
+  height: 100vh;
+  overflow: auto;
 }

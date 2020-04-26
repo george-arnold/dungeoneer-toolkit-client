@@ -13,16 +13,15 @@ const App = () => {
   const [signedIn, setSignedIn] = useLocalStorage("signedIn", false);
 
   return (
-    <main>
+    <main className="App">
+      <Navigation setSignedIn={setSignedIn} signedIn={signedIn} />
+
       <Switch>
         <Route exact path="/register">
           <Register />
         </Route>
         <Route exact path="/signin">
           <Signin setSignedIn={setSignedIn} />
-        </Route>
-        <Route path="/">
-          <Navigation setSignedIn={setSignedIn} signedIn={signedIn} />
         </Route>
       </Switch>
       <Route exact path="/" component={LandingPage} />

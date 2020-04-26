@@ -32,8 +32,8 @@ const Sheet = (props) => {
       .catch((error) => console.log(error));
   }, [id]);
   return (
-    <main>
-      <h2>Your Character Sheet</h2>
+    <main className="Sheet">
+      <h2>Character Sheet</h2>
       <SheetNav id={id} />
       <Switch>
         <Route

@@ -1,0 +1,24 @@
+.ButtonList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.ButtonList .Button {
+  font-size: 24px;
+  margin: 5px;
+  border-radius: 10px;
+  box-shadow: 2px 2px;
+  width: 75px;
+}
+
+.AttackButton {
+  font-size: 24px;
+  margin: 5px;
+  border-radius: 10px;
+  box-shadow: 2px 2px;
+  width: 155px;
+}
+
+.WhatWasRolled h4 {
+  font-size: 20px;
+}

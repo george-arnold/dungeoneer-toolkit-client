@@ -1,6 +1,7 @@
 .CharacterBox {
   border: 1px solid black;
   border-radius: 10px;
+  box-shadow: 2px 2px;
   margin: 15px;
   padding: 10px;
   display: inline-block;
@@ -10,4 +11,10 @@
 
 .CharacterBox a {
   width: 100%;
+  color: black;
+  text-decoration: none;
+}
+
+.CharacterLibrary h2 {
+  margin-left: 50px;
 }

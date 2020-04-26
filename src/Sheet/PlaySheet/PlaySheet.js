@@ -32,39 +32,37 @@ const PlaySheet = (props) => {
       <h3 className="HP">HP: {character.hp}</h3>
       <div className="FlexboxContainer">
         <h6 className="Strength">
-          Strength: {character.strength}
-          <div>{`Modifier:${character.strength / 2 - 5}`}</div>
+          Str: {character.strength}
+          <div>{`${character.strength / 2 - 5}`}</div>
         </h6>
         <h6 className="Dexterity">
-          Dexterity: {character.dexterity}{" "}
-          <div>{`Modifier:${character.dexterity / 2 - 5}`}</div>
+          Dex: {character.dexterity}{" "}
+          <div>{`${character.dexterity / 2 - 5}`}</div>
         </h6>
         <h6 className="Constitution">
-          Constitution: {character.constitution}{" "}
-          <div>{`Modifier:${character.constitution / 2 - 5}`}</div>
+          Con: {character.constitution}{" "}
+          <div>{`${character.constitution / 2 - 5}`}</div>
         </h6>
         <h6 className="Intelligence">
-          Intelligence: {character.intelligence}{" "}
-          <div>{`Modifier:${character.intelligence / 2 - 5}`}</div>
+          Int: {character.intelligence}{" "}
+          <div>{`${character.intelligence / 2 - 5}`}</div>
         </h6>
         <h6 className="Wisdom">
-          Wisdom: {character.wisdom}{" "}
-          <div>{`Modifier:${character.wisdom / 2 - 5}`}</div>
+          Wis: {character.wisdom} <div>{`${character.wisdom / 2 - 5}`}</div>
         </h6>
         <h6 className="Charisma">
-          Charisma: {character.charisma}{" "}
-          <div>{`Modifier:${character.charisma / 2 - 5}`}</div>
+          Cha: {character.charisma} <div>{`${character.charisma / 2 - 5}`}</div>
         </h6>
       </div>
       <h3>
         {configureAttackBonus(character.role)}
         {`Attack Bonus: ${attackBonus} (${attackStat})`}
       </h3>
-      <h2>
+      <ul>
         {" "}
-        Click a button below to roll! The Attack Bonus uses your primary stat
-        (based on your class!)
-      </h2>
+        <li>Click a button below to roll!</li>
+        <li>The Attack Bonus uses your class's primary stat</li>
+      </ul>
       <GamePad attackBonus={attackBonus} attackStat={attackStat} />
     </section>
   );

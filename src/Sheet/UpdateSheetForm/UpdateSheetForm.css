@@ -3,21 +3,8 @@
   flex-direction: column;
 }
 
-.UpdateSheetForm input {
-  width: 100px;
-}
-
-.UpdateSheetForm div input {
-  display: block;
-  width: 50px;
-}
-
-.UpdateSheetForm select {
-  width: 100px;
-}
-
 .UpdateSheetForm button {
-  width: 100px;
+  width: 150px;
   margin-top: 10px;
   box-shadow: 2px 2px;
   border-radius: 10px;
@@ -26,4 +13,52 @@
 
 .UpdateSheetForm button:hover {
   cursor: pointer;
+}
+.UpdateSheetForm div {
+  margin-top: 5px;
+}
+.UpdateSheetForm label {
+  font-size: 20px;
+}
+.UpdateSheetForm input {
+  font-size: 18px;
+  border: 1px solid black;
+  width: 50%;
+  border-radius: 3px;
+  margin-left: 5px;
+}
+
+.UpdateSheetForm input[type="number"] {
+  width: 35px;
+}
+
+.UpdateSheetForm select {
+  border: 1px solid black;
+  border-radius: 3px;
+  display: inline-block;
+  width: 50%;
+  font-size: 18px;
+  margin-left: 5px;
+}
+
+.StatContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.StatContainer div {
+  margin: 5px 0 0 0;
+  font-size: 18px;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 5px;
+  width: 75px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  font-weight: lighter;
+}
+.StatContainer div input[type="number"] {
+  width: 20px;
 }

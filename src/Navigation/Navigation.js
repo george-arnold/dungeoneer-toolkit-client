@@ -1,29 +1,33 @@
 import React from "react";
 import "./Navigation.css";
-import { Link } from "react-router-dom";
 import TokenService from "../services/token-service";
+import { stack as Menu } from "react-burger-menu";
 
 const Navigation = ({ setSignedIn, signedIn }) => {
   if (signedIn) {
     return (
-      <nav className="Navigation">
-        <Link
+      <Menu>
+        <a
           onClick={() => {
             TokenService.clearAuthToken();
             setSignedIn(false);
           }}
-          to="/"
+          className="menu-item"
+          href="/"
         >
           Logout
-        </Link>
-      </nav>
+        </a>
+        <a className="menu-item" href="/library">
+          Library
+        </a>
+      </Menu>
     );
   } else {
     return (
-      <nav className="Navigation">
-        <Link to="/register">Register</Link>
-        <Link to="/signin">Signin</Link>
-      </nav>
+      <Menu>
+        <a href="/register">Register</a>
+        <a href="/signin">Signin</a>
+      </Menu>
     );
   }
 };

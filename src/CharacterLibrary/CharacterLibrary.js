@@ -34,7 +34,7 @@ const CharacterLibrary = () => {
       .catch((err) => console.error(err));
   }, []);
   return (
-    <main>
+    <main className="CharacterLibrary">
       <h2>Character Library</h2>
       <h3>Select a Character to play or edit!</h3>
       <section className="FlexboxContainer">
