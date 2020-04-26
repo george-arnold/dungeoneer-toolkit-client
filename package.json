@@ -23,7 +23,6 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "now ./build",
-    "postdeploy": "now alias -A ./build/now.json",
     "prettier": "prettier --print-width 120 --single-quote --write src/**/*.js"
   },
   "eslintConfig": {
