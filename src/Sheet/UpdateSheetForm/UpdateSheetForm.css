@@ -61,4 +61,11 @@
 }
 .StatContainer div input[type="number"] {
   width: 20px;
+  font-size: 16px;
+}
+
+@media only screen and (min-width: 524px) {
+  .StatContainer {
+    justify-content: center;
+  }
 }

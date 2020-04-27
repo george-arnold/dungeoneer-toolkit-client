@@ -44,3 +44,9 @@
   font-size: 14px;
   color: black;
 }
+
+@media only screen and (min-width: 524px) {
+  .PlaySheet .FlexboxContainer {
+    justify-content: center;
+  }
+}

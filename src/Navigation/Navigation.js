@@ -7,6 +7,9 @@ const Navigation = ({ setSignedIn, signedIn }) => {
   if (signedIn) {
     return (
       <Menu>
+        <a className="menu-item" href="/library">
+          Library
+        </a>
         <a
           onClick={() => {
             TokenService.clearAuthToken();
@@ -16,9 +19,6 @@ const Navigation = ({ setSignedIn, signedIn }) => {
           href="/"
         >
           Logout
-        </a>
-        <a className="menu-item" href="/library">
-          Library
         </a>
       </Menu>
     );
