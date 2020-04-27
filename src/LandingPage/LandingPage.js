@@ -14,7 +14,6 @@ class LandingPage extends Component {
           <p>
             Catalog your role playing characters, and manage your dice rolls
           </p>
-          <p>Sign to get started</p>
           <h2>What the app will do</h2>
         </section>
         <section>

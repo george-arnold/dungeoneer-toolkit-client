@@ -27,6 +27,7 @@ const Navigation = ({ setSignedIn, signedIn }) => {
       <Menu>
         <a href="/register">Register</a>
         <a href="/signin">Signin</a>
+        <a href="/">Landing Page</a>
       </Menu>
     );
   }

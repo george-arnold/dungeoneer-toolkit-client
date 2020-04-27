@@ -15,4 +15,13 @@ main {
   font-family: "Montserrat", sans-serif;
   height: 100vh;
   overflow: auto;
+  background-color: rgb(231, 230, 220);
+}
+
+h2 {
+  color: rgb(212, 50, 45);
+}
+
+h1 {
+  color: rgb(212, 50, 45);
 }

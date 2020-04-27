@@ -9,7 +9,7 @@ const Register = () => {
   const [submissionError, setSubmissionError] = useState(null);
   return (
     <main>
-      <h1>Register as New User</h1>
+      <h1 className="SignInHeading">Register as New User</h1>
       <div className="error">{submissionError}</div>
       <Formik
         initialValues={{ email: "", password: "" }}
@@ -42,12 +42,12 @@ const Register = () => {
         }}
       >
         {({ isSubmitting }) => (
-          <Form>
-            <label htmlFor="email">Enter Email Address:</label>
+          <Form className="SignInForm">
+            <label htmlFor="email">Email Address:</label>
             <Field type="email" name="email" />
             <ErrorMessage name="email" component="div" />
 
-            <label htmlFor="email">Enter Password:</label>
+            <label htmlFor="email">Password:</label>
             <Field type="password" name="password" />
             <ErrorMessage name="password" component="div" />
             <button type="submit" disabled={isSubmitting}>

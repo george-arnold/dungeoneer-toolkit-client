@@ -37,3 +37,10 @@
 .PlaySheet div {
   font-size: 12px;
 }
+.PlaySheet h3 span {
+  font-weight: 600;
+}
+.smallstat {
+  font-size: 14px;
+  color: black;
+}

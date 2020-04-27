@@ -5,4 +5,10 @@
 
 .LandingPage h1 {
   margin-left: 50px;
+  font-size: 32px;
+  text-align: left;
+}
+
+.LandingPage section {
+  text-align: center;
 }

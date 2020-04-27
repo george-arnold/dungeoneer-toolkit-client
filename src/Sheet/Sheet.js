@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./Sheet.css";
-import SheetNav from "./SheetNav/SheetNav";
+
 import UpdateSheetForm from "./UpdateSheetForm/UpdateSheetForm";
 import PlaySheet from "./PlaySheet/PlaySheet";
 import { Switch, Route } from "react-router-dom";
 import config from "../config";
 import TokenService from "../services/token-service";
-
+// eslint-disable-next-line
+import SheetNav from "./SheetNav/SheetNav";
 const Sheet = (props) => {
   let { id } = props.match.params;
   id = Number(id);
@@ -34,7 +35,7 @@ const Sheet = (props) => {
   return (
     <main className="Sheet">
       <h2>Character Sheet</h2>
-      <SheetNav id={id} />
+      {/* <SheetNav id={id} /> */}
       <Switch>
         <Route
           path={`${props.match.path}/edit`}

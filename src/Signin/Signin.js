@@ -10,9 +10,8 @@ const Signin = ({ setSignedIn }) => {
   const [submissionError, setSubmissionError] = useState(null);
   return (
     <main>
-      <h1>Sign in as new user</h1>
+      <h1 className="SignInHeading">Sign in</h1>
 
-      <div className="error">{submissionError}</div>
       <Formik
         initialValues={{ email: "", password: "" }}
         validate={(values) => {
@@ -47,14 +46,19 @@ const Signin = ({ setSignedIn }) => {
         }}
       >
         {({ isSubmitting }) => (
-          <Form>
+          <Form className="SignInForm">
+            <p> Make sure you've registered first!</p>
+            <label htmlFor="email">Email Address:</label>
             <Field type="email" name="email" />
             <ErrorMessage name="email" component="div" />
+
+            <label htmlFor="password">Password:</label>
             <Field type="password" name="password" />
             <ErrorMessage name="password" component="div" />
             <button type="submit" disabled={isSubmitting}>
               Submit
             </button>
+            <div>{submissionError}</div>
           </Form>
         )}
       </Formik>
