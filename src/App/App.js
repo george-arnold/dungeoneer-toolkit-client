@@ -24,7 +24,9 @@ const App = () => {
           <Signin setSignedIn={setSignedIn} />
         </Route>
       </Switch>
-      <Route exact path="/" component={LandingPage} />
+      <Route exact path="/">
+        <LandingPage setSignedIn={setSignedIn} />
+      </Route>
 
       <Route
         exact
