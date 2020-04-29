@@ -1,5 +1,41 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Name of App
+
+The Dungeoneer's Toolkit
+
+## Project-Live
+
+https://the-dungeoneers-toolkit.now.sh/
+
+- Make sure to click "Use Demo Account"
+
+## API
+
+The API, and more information about it, is located at
+https://github.com/george-arnold/dungeoneer-toolkit-api
+
+## Screenshots
+
+![Character Library](./src/assets/CharacterLibPic.png?raw=true "character library screen")
+![Edit Form](./src/assets/CharacterFormPic.png?raw=true "Form to edit character sheets")
+![Dice Roller](./src/assets/CharacterSheetPic.png?raw=true "Dice roller in app")
+
+## App Summary
+
+This app's primary function is to track your character sheets and let you roll dice to help you play games online.
+
+- Sign in
+- Navigate the Character Library, select a cahracter
+- View the character stats/data
+- Edit your character's information
+- Use the dice roller, which takes your class and stats into account when it rolls!
+
+## Technology
+
+- Main technologies are React and CSS.
+- Other technologies used: Jest- Testing, Formik for forms, and Yup for form validation.
+
 ## Available Scripts
 
 In the project directory, you can run:
