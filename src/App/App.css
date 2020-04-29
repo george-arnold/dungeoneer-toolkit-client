@@ -14,8 +14,6 @@ main {
 .App {
   font-family: "Montserrat", sans-serif;
   height: 100vh;
-  overflow: hidden;
-  background-color: rgb(231, 230, 220);
 }
 
 h2 {
