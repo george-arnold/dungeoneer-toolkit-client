@@ -3,10 +3,55 @@ import "./UpdateSheetForm.css";
 import { Formik } from "formik";
 import TokenService from "../../services/token-service";
 import { Link } from "react-router-dom";
-
+import * as Yup from "yup";
 import config from "../../config";
+
+//sets up validator from yup library
+const characterSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, "Too Short!")
+    .max(16, "Too Long!")
+    .required("Required"),
+  level: Yup.number()
+    .integer()
+    .required("Required")
+    .positive()
+    .max(20, "Cannot be over Level 20"),
+  hp: Yup.number()
+    .max(9999, "hp can't be over 9999")
+    .positive("You're dead")
+    .integer("round up")
+    .required(),
+  strength: Yup.number()
+    .integer()
+    .positive()
+    .max(24, "Most stats are 20, max is 24"),
+  dexterity: Yup.number()
+    .integer()
+    .positive()
+    .max(24, "Most stats are 20, max is 24"),
+  constitution: Yup.number()
+    .integer()
+    .positive()
+    .max(24, "Most stats are 20, max is 24"),
+  intelligence: Yup.number()
+    .integer()
+    .positive()
+    .max(24, "Most stats are 20, max is 24"),
+  wisdom: Yup.number()
+    .integer()
+    .positive()
+    .max(24, "Most stats are 20, max is 24"),
+  charisma: Yup.number()
+    .integer()
+    .positive()
+    .max(24, "Most stats are 20, max is 24"),
+});
 const UpdateSheetForm = (props) => {
   const { character, id } = props;
+  console.log("character", character);
+  console.log("id in SheetForm", id);
+
   const roleOptions = ["Thief", "Warrior", "Brute", "Mage", "Hunter", "Bard"];
   return (
     <div>
@@ -20,6 +65,7 @@ const UpdateSheetForm = (props) => {
       </nav>
       <Formik
         initialValues={{
+          id: id,
           name: character.name,
           level: character.level,
           role: character.role,
@@ -31,43 +77,10 @@ const UpdateSheetForm = (props) => {
           wisdom: character.wisdom,
           charisma: character.charisma,
         }}
-        validate={(values) => {
-          const errors = {};
-          if (!values.name) {
-            errors.name = "Required";
-          }
-          if (!values.role) {
-            errors.role = "Required";
-          }
-          if (!values.level) {
-            errors.level = "Required";
-          }
-          if (!values.hp) {
-            errors.hp = "Required";
-          }
-          if (!values.strength) {
-            errors.strength = "Required";
-          }
-          if (!values.dexterity) {
-            errors.dexterity = "Required";
-          }
-          if (!values.constitution) {
-            errors.constitution = "Required";
-          }
-          if (!values.intelligence) {
-            errors.intelligence = "Required";
-          }
-          if (!values.wisdom) {
-            errors.wisdom = "Required";
-          }
-          if (!values.charisma) {
-            errors.charisma = "Required";
-          }
-          return errors;
-        }}
+        //infuses Yup with Formik to validate form
+        validationSchema={characterSchema}
         onSubmit={(values, { setSubmitting }) => {
-          console.log(TokenService.getAuthToken());
-
+          console.log("values sent in form", values);
           fetch(`${config.API_ENDPOINT}/characters/${id}`, {
             method: "PATCH",
             headers: {
@@ -80,6 +93,7 @@ const UpdateSheetForm = (props) => {
               !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
             )
             .then((res) => {
+              console.log("values sent", values);
               props.setCharacter(values);
               props.history.push(`/character/${id}/play`);
             })
@@ -154,6 +168,7 @@ const UpdateSheetForm = (props) => {
               />
               {errors.hp && touched.hp && errors.hp}
             </div>
+
             <div className="StatContainer">
               <div>
                 <label htmlFor="strength">Str:</label>
@@ -164,7 +179,6 @@ const UpdateSheetForm = (props) => {
                   onBlur={handleBlur}
                   value={values.strength}
                 />
-                {errors.strength && touched.strength && errors.strength}
               </div>
               <div>
                 <label htmlFor="dexterity">Dex:</label>
@@ -175,8 +189,6 @@ const UpdateSheetForm = (props) => {
                   onBlur={handleBlur}
                   value={values.dexterity}
                 />
-
-                {errors.dexterity && touched.dexterity && errors.dexterity}
               </div>
               <div>
                 <label htmlFor="constitution">Con:</label>
@@ -187,9 +199,6 @@ const UpdateSheetForm = (props) => {
                   onBlur={handleBlur}
                   value={values.constitution}
                 />
-                {errors.constitution &&
-                  touched.constitution &&
-                  errors.constitution}
               </div>
               <div>
                 <label htmlFor="intelligence">Int:</label>
@@ -200,9 +209,6 @@ const UpdateSheetForm = (props) => {
                   onBlur={handleBlur}
                   value={values.intelligence}
                 />
-                {errors.intelligence &&
-                  touched.intelligence &&
-                  errors.intelligence}
               </div>
               <div>
                 <label htmlFor="wisdom">Wis:</label>
@@ -213,7 +219,6 @@ const UpdateSheetForm = (props) => {
                   onBlur={handleBlur}
                   value={values.wisdom}
                 />
-                {errors.wisdom && touched.wisdom && errors.wisdom}
               </div>
               <div>
                 <label htmlFor="charisma">Cha:</label>
@@ -224,8 +229,20 @@ const UpdateSheetForm = (props) => {
                   onBlur={handleBlur}
                   value={values.charisma}
                 />
-                {errors.charisma && touched.charisma && errors.charisma}
               </div>
+            </div>
+            <div className="StatErrors">
+              {errors.strength && touched.strength && errors.strength}
+              {errors.dexterity && touched.dexterity && errors.dexterity}
+              {errors.constitution &&
+                touched.constitution &&
+                errors.constitution}
+              {errors.intelligence &&
+                touched.intelligence &&
+                errors.intelligence}
+              {errors.wisdom && touched.wisdom && errors.wisdom}
+
+              {errors.charisma && touched.charisma && errors.charisma}
             </div>
             <ul>
               <li>Type into the boxes to make changes</li>
