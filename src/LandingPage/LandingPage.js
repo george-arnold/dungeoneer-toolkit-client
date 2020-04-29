@@ -8,10 +8,12 @@ import AuthApiService from "../services/auth-api-service";
 import { useHistory } from "react-router-dom";
 
 const LandingPage = ({ setSignedIn }) => {
+  //demo state changed by button on screen
   const [demo, setDemo] = useState(false);
   let history = useHistory();
 
   useEffect(() => {
+    //logs in with demo account
     if (demo) {
       AuthApiService.postLogin({
         email: "mark@gmail.com",

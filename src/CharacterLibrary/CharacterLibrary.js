@@ -28,6 +28,7 @@ const CharacterLibrary = () => {
         return charactersRes.json();
       })
       .then((characterArray) => {
+        //makes sure characters stay in order on load
         characterArray.sort((a, b) => a.id - b.id);
         setCharacterLib(characterArray);
       })
@@ -39,6 +40,7 @@ const CharacterLibrary = () => {
       <h3>Select a Character to play or edit!</h3>
       <section className="FlexboxContainer">
         {characterLib.map((character) => {
+          //prints character names
           return (
             <Character
               id={character.id}

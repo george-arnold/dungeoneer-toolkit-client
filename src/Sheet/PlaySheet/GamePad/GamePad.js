@@ -3,6 +3,7 @@ import "./GamePad.css";
 import ButtonList from "../ButtonList/ButtonList";
 
 const GamePad = (props) => {
+  // value is the value of the final roll of the dice
   const [value, changeValue] = useState(null);
   const { attackBonus, attackStat } = props;
   return (

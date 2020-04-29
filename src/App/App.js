@@ -10,6 +10,7 @@ import Register from "../Register/Register";
 import useLocalStorage from "../App/app-helper";
 
 const App = () => {
+  // signIn sticks through page refresh
   const [signedIn, setSignedIn] = useLocalStorage("signedIn", false);
 
   return (

@@ -9,6 +9,7 @@ const ButtonList = (props) => {
   };
   const { attackBonus, attackStat } = props;
 
+  //stores die types
   const diceArray = [4, 6, 8, 10, 12, 20, 100];
 
   return (
@@ -29,10 +30,11 @@ const ButtonList = (props) => {
             </button>
           );
         })}
-        {/* needs to be randomnumber20 + relevant character role stat */}
+
         <button
           className="AttackButton"
           onClick={() => {
+            //creates the attack roll button that adds that character's primary stat to d20 die rolls
             props.changeValue(randomNumber(20) + attackBonus);
             setDieRoll(`20 + ${attackBonus} (${attackStat} )`);
           }}

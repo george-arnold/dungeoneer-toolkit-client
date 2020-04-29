@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 //for each if character class is X make attackStat
 const PlaySheet = (props) => {
   const { character } = props;
+  // stores which class uses which stat for attack bonus
   const statsPerClass = [
     { role: "Thief", stat: character.dexterity, statName: "Dexterity" },
     { role: "Warrior", stat: character.strength, statName: "Strength" },
@@ -17,6 +18,7 @@ const PlaySheet = (props) => {
   ];
   let attackBonus = null;
   let attackStat = null;
+  // calculates attack bonus based on class
   const configureAttackBonus = (role) => {
     statsPerClass.forEach((data) => {
       if (data.role === role) {
@@ -55,6 +57,7 @@ const PlaySheet = (props) => {
       <div className="FlexboxContainer">
         <h6 className="Strength">
           Str: {character.strength}
+          {/* calculate modifier for each stat */}
           <div>{`${Math.floor(character.strength / 2 - 5)}`}</div>
         </h6>
         <h6 className="Dexterity">

@@ -12,8 +12,9 @@ const Sheet = (props) => {
   let { id } = props.match.params;
   id = Number(id);
   const [character, setCharacter] = useState({});
+  console.log("id in Sheet", id);
   useEffect(() => {
-    console.log(TokenService.getAuthToken());
+    //fetches characters by id in object
     fetch(`${config.API_ENDPOINT}/characters/${id}`, {
       method: "GET",
       headers: {
@@ -28,10 +29,14 @@ const Sheet = (props) => {
         return charactersRes.json();
       })
       .then((characterData) => {
+        //pushes character to state
+        console.log("character data received in GET", characterData);
         setCharacter(characterData);
       })
       .catch((error) => console.log(error));
-  }, [id]);
+    // disable ability to change id
+    // eslint-disable-next-line
+  }, []);
   return (
     <main className="Sheet">
       <h2>Character Sheet</h2>

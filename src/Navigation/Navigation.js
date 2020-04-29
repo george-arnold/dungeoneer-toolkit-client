@@ -6,6 +6,7 @@ import { stack as Menu } from "react-burger-menu";
 const Navigation = ({ setSignedIn, signedIn }) => {
   if (signedIn) {
     return (
+      // sidebar menu if user is logged in
       <Menu>
         <a className="menu-item" href="/library">
           Library
@@ -24,6 +25,7 @@ const Navigation = ({ setSignedIn, signedIn }) => {
     );
   } else {
     return (
+      //sidebar menu if user is not logged in
       <Menu>
         <a href="/register">Register</a>
         <a href="/signin">Signin</a>

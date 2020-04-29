@@ -26,6 +26,7 @@ const Register = () => {
             password: values.password,
           })
             .then((user) => {
+              //resets values after submit
               values.email = "";
               values.password = "";
               setSubmitting(false);
