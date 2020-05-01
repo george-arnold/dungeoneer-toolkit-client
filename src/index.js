@@ -2,9 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App/App";
 import "./index.css";
+import { BrowserRouter } from "react-router-dom";
+
 import { usePromiseTracker } from "react-promise-tracker";
 import Loader from "react-loader-spinner";
-import { BrowserRouter } from "react-router-dom";
 
 const LoadingIndicator = () => {
   const { promiseInProgress } = usePromiseTracker();
@@ -14,12 +15,13 @@ const LoadingIndicator = () => {
         style={{
           width: "100%",
           height: "100",
+          position: "absolute",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
         }}
       >
-        <Loader type="ThreeDots" color="#2BAD60" height="100" width="100" />
+        <Loader type="ThreeDots" color="#000000" height="100" width="100" />
       </div>
     )
   );
@@ -27,8 +29,8 @@ const LoadingIndicator = () => {
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
     <LoadingIndicator />
+    <App />
   </BrowserRouter>,
   document.getElementById("root")
 );
