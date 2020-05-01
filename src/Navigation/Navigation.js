@@ -1,7 +1,7 @@
-import React from "react";
-import "./Navigation.css";
-import TokenService from "../services/token-service";
-import { stack as Menu } from "react-burger-menu";
+import React from 'react';
+import './Navigation.css';
+import TokenService from '../services/token-service';
+import { stack as Menu } from 'react-burger-menu';
 
 const Navigation = ({ setSignedIn, signedIn }) => {
   if (signedIn) {

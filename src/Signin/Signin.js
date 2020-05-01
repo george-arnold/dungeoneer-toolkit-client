@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import AuthApiService from "../services/auth-api-service";
-import TokenService from "../services/token-service";
-import "./Signin.css";
-import { useHistory } from "react-router-dom";
+import React, { useState } from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import AuthApiService from '../services/auth-api-service';
+import TokenService from '../services/token-service';
+import './Signin.css';
+import { useHistory } from 'react-router-dom';
 
 const Signin = ({ setSignedIn }) => {
   let history = useHistory();
@@ -13,28 +13,28 @@ const Signin = ({ setSignedIn }) => {
       <h1 className="SignInHeading">Sign in</h1>
 
       <Formik
-        initialValues={{ email: "", password: "" }}
-        validate={(values) => {
+        initialValues={{ email: '', password: '' }}
+        validate={values => {
           const errors = {};
           if (!values.email) {
-            errors.email = "Required";
+            errors.email = 'Required';
           }
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
           AuthApiService.postLogin({
             email: values.email,
-            password: values.password,
+            password: values.password
           })
-            .then((res) => {
-              values.password = "";
-              values.email = "";
+            .then(res => {
+              values.password = '';
+              values.email = '';
               TokenService.saveAuthToken(res.authToken);
               setSignedIn(true);
               setSubmitting(false);
-              history.push("/library");
+              history.push('/library');
             })
-            .catch((res) => {
+            .catch(res => {
               if (res.email) {
                 setSubmissionError(res.email);
               }

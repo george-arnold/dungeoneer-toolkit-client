@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import AuthApiService from "../services/auth-api-service";
-import "./Register.css";
-import { useHistory } from "react-router-dom";
+import React, { useState } from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import AuthApiService from '../services/auth-api-service';
+import './Register.css';
+import { useHistory } from 'react-router-dom';
 
 const Register = () => {
   let history = useHistory();
@@ -12,27 +12,27 @@ const Register = () => {
       <h1 className="SignInHeading">Register as New User</h1>
       <div className="error">{submissionError}</div>
       <Formik
-        initialValues={{ email: "", password: "" }}
-        validate={(values) => {
+        initialValues={{ email: '', password: '' }}
+        validate={values => {
           const errors = {};
           if (!values.email) {
-            errors.email = "Required";
+            errors.email = 'Required';
           }
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
           AuthApiService.postUser({
             email: values.email,
-            password: values.password,
+            password: values.password
           })
-            .then((user) => {
+            .then(user => {
               //resets values after submit
-              values.email = "";
-              values.password = "";
+              values.email = '';
+              values.password = '';
               setSubmitting(false);
-              history.push("/signin");
+              history.push('/signin');
             })
-            .catch((res) => {
+            .catch(res => {
               if (res.email) {
                 setSubmissionError(res.email);
               }
