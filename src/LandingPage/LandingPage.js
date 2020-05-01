@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import './LandingPage.css';
-import CharacterLibPic from '../assets/CharacterLibPic.png';
-import CharacterSheetPic from '../assets/CharacterSheetPic.png';
-import CharacterFormPic from '../assets/CharacterFormPic.png';
-import TokenService from '../services/token-service';
-import AuthApiService from '../services/auth-api-service';
-import { useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import "./LandingPage.css";
+import CharacterLibPic from "../assets/CharacterLibPic.png";
+import CharacterSheetPic from "../assets/CharacterSheetPic.png";
+import CharacterFormPic from "../assets/CharacterFormPic.png";
+import TokenService from "../services/token-service";
+import AuthApiService from "../services/auth-api-service";
+import { useHistory } from "react-router-dom";
 
-import { trackPromise } from 'react-promise-tracker';
+import { trackPromise } from "react-promise-tracker";
 
 const LandingPage = ({ setSignedIn }) => {
   //demo state changed by button on screen
@@ -18,17 +18,18 @@ const LandingPage = ({ setSignedIn }) => {
     //logs in with demo account
 
     if (demo) {
+      // track promise sets a loading icon on load
       trackPromise(
         AuthApiService.postLogin({
-          email: 'mark@gmail.com',
-          password: 'goodpassword'
+          email: "mark@gmail.com",
+          password: "goodpassword",
         })
-          .then(res => {
+          .then((res) => {
             TokenService.saveAuthToken(res.authToken);
             setSignedIn(true);
-            history.push('/library');
+            history.push("/library");
           })
-          .catch(res => {
+          .catch((res) => {
             alert(res);
           })
       );
@@ -43,7 +44,6 @@ const LandingPage = ({ setSignedIn }) => {
         <p>Catalog your role playing characters, and manage your dice rolls</p>
         <button
           onClick={() => {
-            alert('the demo may take a few seconds to load');
             setDemo(true);
           }}
           className="ClassicButton"
@@ -54,15 +54,27 @@ const LandingPage = ({ setSignedIn }) => {
       </section>
       <section>
         <h3>Save all your characters in the Character Library</h3>
-        <img className="LibraryPic" src={CharacterLibPic} alt="library of playable characters" />
+        <img
+          className="LibraryPic"
+          src={CharacterLibPic}
+          alt="library of playable characters"
+        />
       </section>
       <section>
         <h3>Update your stats, to keep track of your character.</h3>
-        <img className="FormPic" src={CharacterFormPic} alt="form to input character info" />
+        <img
+          className="FormPic"
+          src={CharacterFormPic}
+          alt="form to input character info"
+        />
       </section>
       <section>
         <h3>Click on dice to roll automatically!</h3>
-        <img className="PlaySheetPic" src={CharacterSheetPic} alt="playsheet for playability" />
+        <img
+          className="PlaySheetPic"
+          src={CharacterSheetPic}
+          alt="playsheet for playability"
+        />
       </section>
     </main>
   );
