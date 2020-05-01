@@ -1,7 +1,6 @@
 {
   "version": 2,
-  "name": "the-dungeoneers-toolkit",
-  "alias": "george-arnold-dungeoneers-toolkit",
+  "name": "dungeoneer-toolkit",
   "routes": [
     { "handle": "filesystem" },
     { "src": "/.*", "dest": "/index.html" }
