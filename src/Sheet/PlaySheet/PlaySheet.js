@@ -7,25 +7,28 @@ import GamePad from "./GamePad/GamePad";
 const PlaySheet = (props) => {
   const { character } = props;
   // stores which class uses which stat for attack bonus
-  const statsPerClass = [
-    { role: "Thief", stat: character.dexterity, statName: "Dexterity" },
-    { role: "Warrior", stat: character.strength, statName: "Strength" },
-    { role: "Brute", stat: character.constitution, statName: "Constitution" },
-    { role: "Mage", stat: character.intelligence, statName: "Intelligence" },
-    { role: "Hunter", stat: character.wisdom, statName: "Wisdom" },
-    { role: "Bard", stat: character.charisma, statName: "Charisma" },
-  ];
+  const classDictionary = {
+    strength: "Warrior",
+    dexterity: "Thief",
+    constitution: "Brute",
+    intelligence: "Mage",
+    wisdom: "Hunter",
+    charisma: "Bard",
+  };
+
   let attackBonus = null;
   let attackStat = null;
-  // calculates attack bonus based on class
+
   const configureAttackBonus = (role) => {
-    statsPerClass.forEach((data) => {
-      if (data.role === role) {
-        attackBonus = data.stat / 2 - 5;
+    // calculates attack bonus based on class
+    Object.keys(classDictionary).forEach((data) => {
+      if (classDictionary[data] === role) {
+        attackBonus = character[data] / 2 - 5;
         attackStat = data.statName;
       }
     });
   };
+
   return (
     <section className="PlaySheet">
       <h3 className="Name">
@@ -43,34 +46,17 @@ const PlaySheet = (props) => {
       <h3>
         {configureAttackBonus(character.role)}
         <span>Attack Bonus:</span> {attackBonus}{" "}
-        <span className="smallstat">({attackStat})</span>
+        <span className="smallstat">{attackStat}</span>
       </h3>
       <div className="FlexboxContainer">
-        <h6 className="Strength">
-          Str: {character.strength}
-          {/* calculate modifier for each stat */}
-          <div>{`${Math.floor(character.strength / 2 - 5)}`}</div>
-        </h6>
-        <h6 className="Dexterity">
-          Dex: {character.dexterity}{" "}
-          <div>{`${Math.floor(character.dexterity / 2 - 5)}`}</div>
-        </h6>
-        <h6 className="Constitution">
-          Con: {character.constitution}{" "}
-          <div>{`${Math.floor(character.constitution / 2 - 5)}`}</div>
-        </h6>
-        <h6 className="Intelligence">
-          Int: {character.intelligence}{" "}
-          <div>{`${Math.floor(character.intelligence / 2 - 5)}`}</div>
-        </h6>
-        <h6 className="Wisdom">
-          Wis: {character.wisdom}{" "}
-          <div>{`${Math.floor(character.wisdom / 2 - 5)}`}</div>
-        </h6>
-        <h6 className="Charisma">
-          Cha: {character.charisma}{" "}
-          <div>{`${Math.floor(character.charisma / 2 - 5)}`}</div>
-        </h6>
+        {Object.keys(classDictionary).map((stat, index) => {
+          return (
+            <h6 key={index}>
+              {stat} {character[stat]}
+              <div>{`${Math.floor(character[stat] / 2 - 5)}`}</div>
+            </h6>
+          );
+        })}
       </div>
 
       <ul>
