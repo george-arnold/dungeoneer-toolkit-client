@@ -1,7 +1,6 @@
 import React from "react";
 import "./PlaySheet.css";
 import GamePad from "./GamePad/GamePad";
-import { Link } from "react-router-dom";
 
 //figure out which thing to use
 //for each if character class is X make attackStat
@@ -29,14 +28,6 @@ const PlaySheet = (props) => {
   };
   return (
     <section className="PlaySheet">
-      <nav className="SheetNav">
-        <Link className="NotSelected" to={`/character/${character.id}/edit`}>
-          Edit
-        </Link>
-        <Link className="SelectedNav" to={`/character/${character.id}`}>
-          View/Play
-        </Link>
-      </nav>
       <h3 className="Name">
         <span>Name:</span> {character.name}
       </h3>

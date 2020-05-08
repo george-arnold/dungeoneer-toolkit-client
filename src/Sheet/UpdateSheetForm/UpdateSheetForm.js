@@ -2,7 +2,7 @@ import React from "react";
 import "./UpdateSheetForm.css";
 import { Formik } from "formik";
 import TokenService from "../../services/token-service";
-import { Link } from "react-router-dom";
+
 import * as Yup from "yup";
 import config from "../../config";
 
@@ -55,14 +55,6 @@ const UpdateSheetForm = (props) => {
   const roleOptions = ["Thief", "Warrior", "Brute", "Mage", "Hunter", "Bard"];
   return (
     <div>
-      <nav className="SheetNav">
-        <Link className="SelectedNav" to={`/character/${id}/edit`}>
-          Edit
-        </Link>
-        <Link className="NotSelected" to={`/character/${id}`}>
-          View/Play
-        </Link>
-      </nav>
       <Formik
         initialValues={{
           id: id,
