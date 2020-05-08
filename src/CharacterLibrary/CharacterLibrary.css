@@ -16,6 +16,9 @@
   font-weight: bold;
 }
 
+.CharacterLibrary {
+  margin-top: 30px;
+}
 .CharacterLibrary h2 {
-  margin-left: 50px;
+  text-align: center;
 }
