@@ -14,13 +14,15 @@
   font-size: 18px;
   border: 1px solid black;
   border-radius: 20px;
-  padding: 5px;
+  padding: 17px;
   width: 75px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-weight: lighter;
+  margin: 6px;
+  text-transform: capitalize;
 }
 
 .PlaySheet h6 div {
@@ -29,6 +31,7 @@
   width: 25px;
   font-size: 18px;
   padding: 5px;
+  margin-top: 7px;
 }
 .PlaySheet .FlexboxContainer {
   padding-top: 10px;
