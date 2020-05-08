@@ -1,25 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import "./SheetNav.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const SheetNav = ({ id }) => {
-  const [activeClass, setActiveClass] = useState(false);
+  const location = useLocation();
+  // if URL is edit
+  const edit = location.pathname.substr(-4) === "edit";
 
   return (
     <nav className="SheetNav">
+      <Link className={edit ? "inactive" : "active"} to={`/character/${id}`}>
+        View/Play
+      </Link>
       <Link
-        onClick={() => setActiveClass(!activeClass)}
-        className={activeClass ? "active" : "inactive"}
+        className={edit ? "active" : "inactive"}
         to={`/character/${id}/edit`}
       >
         Edit
-      </Link>
-      <Link
-        onClick={() => setActiveClass(!activeClass)}
-        className={activeClass ? "inactive" : "active"}
-        to={`/character/${id}`}
-      >
-        View/Play
       </Link>
     </nav>
   );
