@@ -11,11 +11,6 @@ main {
   justify-content: space-around;
 }
 
-.App {
-  font-family: "Montserrat", sans-serif;
-  height: 100vh;
-}
-
 h2 {
   color: rgb(212, 50, 45);
 }
@@ -23,6 +18,7 @@ h2 {
 h1 {
   color: rgb(212, 50, 45);
 }
+
 /* create button css to use for most buttons */
 .ClassicButton {
   width: 150px;
