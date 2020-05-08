@@ -1,14 +1,18 @@
 .LandingPage img {
-  width: 300px;
+  box-sizing: border-box;
+  width: 100%;
   border: 1px solid black;
 }
 
 .LandingPage h1 {
-  margin-left: 50px;
   font-size: 32px;
-  text-align: left;
+  text-align: center;
 }
 
 .LandingPage section {
   text-align: center;
+}
+
+.LandingPage img {
+  width: 40%;
 }
